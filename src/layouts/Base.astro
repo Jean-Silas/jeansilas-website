@@ -21,10 +21,12 @@ const { title } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body>
-        <Header />
-        <BigHeader />
-        <slot />
+    <body class="min-h-[100vh] grid grid-rows-[1fr_auto]">
+        <main>
+            <Header />
+            <BigHeader />
+            <slot />
+        </main>
         <Footer />
     </body>
 </html>
