@@ -2,7 +2,7 @@
 interface Props {
     class?: string;
 }
-const {class: className} = Astro.props
+const { class: className } = Astro.props;
 ---
 
-<span class:list={['text-honey-300', className]}><slot/></span>
+<span class:list={['text-honey-300', className]}><slot /></span>

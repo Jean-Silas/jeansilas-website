@@ -24,7 +24,7 @@ module.exports = {
         require('@tailwindcss/container-queries'),
         siteColors,
         proseStyles,
-		fluidText,
+        fluidText,
         deviceBreakpoints,
     ],
 };
