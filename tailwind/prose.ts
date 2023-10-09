@@ -36,7 +36,7 @@ export default plugin(
                             },
                             h2: {
                                 fontSize: '1.125em',
-                                'margin-top': 'unset'
+                                'margin-top': 'unset',
                             },
                         },
                     },
