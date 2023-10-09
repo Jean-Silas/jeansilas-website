@@ -1,0 +1,13 @@
+---
+import { getCollection, getEntry, getEntries } from 'astro:content';
+import Base from '@l/Base.astro';
+import Article from '@md/Article.astro';
+
+const entry = await getEntry('blog', 'hello-world');
+const { Content } = await entry.render();
+---
+<Base title="Jean-Silas Moor | Blog">
+    <Article>
+        <Content/>
+    </Article>
+</Base>

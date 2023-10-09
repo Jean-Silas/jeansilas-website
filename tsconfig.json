@@ -7,6 +7,7 @@
             "@c/*": ["src/components/*"],
             "@b/*": ["src/components/blocks/*"],
             "@e/*": ["src/components/elements/*"],
+            "@md/*": ["src/components/md/*"],
             "@l/*": ["src/layouts/*"],
             "@p/*": ["src/pages/*"]
         },
