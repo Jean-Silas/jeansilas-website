@@ -4,6 +4,9 @@ import Header from '@b/Header.astro';
 import BigHeader from '@b/BigHeader.astro';
 import Footer from '@b/Footer.astro';
 import HL from '@e/HL.astro';
+
+import Calendar from "@c/cards/Calendar";
+import CalendarModal from "@c/cards/CalendarModal"
 ---
 
 <Base title="Jean-Silas Moor: The ArtOps Guy">
@@ -55,9 +58,13 @@ import HL from '@e/HL.astro';
             outside of my personal network.
         </p>
         <p>
-            In the meantime, if we have friends in common, feel free to reach out through our mutual
-            associates to set up a call.
+            In the meantime, if we have friends in common, please feel free to reach out
+			through the scheduling link below.
         </p>
+		<div class="ml-auto w-fit">
+			<CalendarModal client:load/>
+		</div>
+		
     </section>
 	<Footer/>
 </Base>
