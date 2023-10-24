@@ -1,0 +1,72 @@
+---
+import Wide from '@l/Wide.astro';
+
+import MentorshipInfo from '@c/cards/MentorshipInfo.astro';
+import MentorshipSideHeader from '@c/blocks/MentorshipSideHeader.astro';
+---
+
+<Wide title="ArtOps Mentorship">
+    <div class="grid grid-cols-1 md:grid-cols-[auto_3fr] items-start ">
+        <MentorshipSideHeader class="lg:sticky"/>
+        <div class="
+                    
+                    max-w-4xl
+                    grid
+                    grid-cols-1
+                    gap-4
+                    lg:grid-cols-2
+                    justify-stretch
+                    justify-items-center
+                    p-4
+            ">
+            <MentorshipInfo title="Game Design" price="8-16 hours per month">
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Not for Beginners</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+            <MentorshipInfo title="Unreal Engine" price="6-12 hours per month" >
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Not for Beginners</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+            <MentorshipInfo title="ArtOps" price="12-20 hours per month" class="lg:col-span-2">
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Not for Beginners</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+
+        </div>
+    </div>
+    <article
+        class="prose prose-invert bg-space-950 p-4 m-2 shadow-xl shadow-[#00000088] outline outline-1 outline-space-800"
+    >
+        <section class="mx-auto my-4 max-w-xl px-4 text-2xl-fluid">
+            <h2 class="mb-3 text-3xl">
+                Hi.<br />I'm JS.
+            </h2>
+            <p>I'm technically a techical artist. Sorta.</p>
+            <p>
+                I wear hats with titles like "Pipeline Architect" and "ArtOps Engineer." I make the
+                glue that helps studios manage complex asset production pipelines.
+            </p>
+            <p>
+                More specifically, I specialize in helping folks outside the gaming industry
+                integrate technologies like <strong>Unreal Engine</strong> and
+                <strong>Blender</strong> into their media pipelines.
+            </p>
+            <p>
+                That means I frequently work with architects, video production companies, internal
+                corporate media teams, and indie livestreaming productions.
+            </p>
+        </section>
+    </article>
+</Wide>
