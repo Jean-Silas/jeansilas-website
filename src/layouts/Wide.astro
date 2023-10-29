@@ -21,16 +21,11 @@ const { title } = Astro.props;
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
     </head>
-    <body class="min-h-[100vh] grid grid-rows-[1fr_auto]  ">
+    <body class="min-h-[100vh] grid grid-rows-[auto_8fr_auto] items-end" >
         <Header />
-        <div class="grid lg:grid-cols-[1fr_3fr] max-w-[120rem] m-auto h-full">
-            <aside class="lg:justify-self-end">
-                <BigHeader />
-            </aside>
-            <main class="lg:pt-12">
-                <slot />
-            </main>
-        </div>
+        <main class="sm:pt-[44px] w-full max-w-[120rem] m-auto h-full">
+            <slot />
+        </main>
         <Footer />
     </body>
 </html>

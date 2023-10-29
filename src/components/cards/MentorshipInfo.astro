@@ -1,0 +1,57 @@
+---
+interface Props {
+    title: string;
+    price: string;
+    class?: string;
+}
+
+import FancyHeader from '@c/elements/FancyHeader.astro';
+
+const { title, price, class: _class = "" } = Astro.props;
+
+const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
+---
+
+<div class=`w-full  h-full aspect-video ${outer_class}`>
+    <div class=`bg-space-950
+                @container
+                grid
+                grid-rows-[auto_1fr]
+                p-4
+                w-full
+                h-auto
+                min-h-full
+                shadow-xl
+                shadow-[#00000088]
+                outline
+                outline-1
+                outline-space-800
+                ${inner_class}
+                `> 
+        <FancyHeader class="text-fc-[1.5rem_5cqw_3rem] mb-3 mt-0 ml-auto border-none">
+            {title}
+        </FancyHeader>
+        <!-- <h2 class=`mb-3 text-fc-[1.5rem_5cqw_3rem] font-black`>
+            {title}
+        </h2> -->
+        <div class="grid
+                    grid-rows-[auto_3fr]
+                    @lg:grid-cols-2
+                    gap-4
+                    items-start
+                    align-top
+                    h-full
+                    ">
+            <picture class=` @lg:aspect-square aspect-[21/9] w-[90%] max-w-full ${picture_class}`>
+            </picture>
+            <div class="grid grid-rows-[3fr_auto] h-full">
+                <section class=`${text_class}`>
+                    <slot/>
+                </section>
+                <div class="ml-auto w-fit text-xl p-2 ">
+                    {price}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

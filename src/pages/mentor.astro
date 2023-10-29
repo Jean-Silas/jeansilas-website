@@ -1,0 +1,129 @@
+---
+import Wide from '@l/Wide.astro';
+
+import MentorshipInfo from '@c/cards/MentorshipInfo.astro';
+import MentorshipSideHeader from '@c/blocks/MentorshipSideHeader.astro';
+
+import FancyHeader from '@c/elements/FancyHeader.astro';
+---
+
+<Wide title="ArtOps Mentorship">
+    <div class="grid grid-cols-1 md:grid-cols-[auto_3fr] items-start ">
+        <MentorshipSideHeader class="md:sticky"/>
+        <div class="
+                    max-w-6xl
+                    grid
+                    grid-cols-1
+                    gap-4
+                    lg:grid-cols-2
+                    justify-stretch
+                    justify-items-center
+                    p-4
+            ">
+            <MentorshipInfo title="Game Design" price="8-16 hours per month">
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Not for Beginners</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+            <MentorshipInfo title="ArtOps" price="12-20 hours per month" >
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Not for Beginners</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+            <MentorshipInfo title="Custom" price="Flexible" class="lg:col-span-2">
+                <span class="font-bold text-lg">At A Glance:</span>
+                <ul class="list-outside ml-4 list-disc">
+                    <li>Whatever you need</li>
+                    <li>No, Seriously, Not for Beginners</li>
+                    <li>You're gonna have a bad time if you're a noob</li>
+                </ul>
+            </MentorshipInfo>
+        </div>
+    </div>
+    <hr class="w-1/2 mx-auto border-bone-400 border-b mt-4 mb-6 ">
+    <div class="mx-auto max-w-4xl">
+        <article class="prose
+                        prose-invert
+                        max-w-none
+                        bg-space-950
+                        p-4
+                        m-4
+                        shadow-xl
+                        shadow-[#00000088]
+                        outline
+                        outline-1
+                        outline-space-800
+                        lg:col-span-1"
+        >
+            <section class="mx-auto my-4 px-4 text-2xl-fluid ">
+                <FancyHeader class="text-3xl-fluid">
+                    How it Works
+                </FancyHeader>
+                <p>
+                    If you can learn it from Youtube, go learn it from Youtube. If you can learn
+                    it from the documentation, go learn it from the documentation.
+                    <strong>My focus is on helping people develop strategic decision-making skills.</strong>
+                </p>
+                <p>
+                    I expect the people I mentor to actively self-educate between meetings. This is so we can
+                    use our hands-on time to go over the things that <em>don't</em> fit into your typical tutorial
+                    or class — the contextual, big-picture, decision-making that comes up when you have to apply
+                    your skills and knowledge to <em>real</em> projects.
+                </p>
+                <p>
+                    In terms of specific software and tools, though, my expectations are fairly simple. You'll need:
+                </p>
+                <ol>
+                    <li>
+                        <span>A real text editor.</span>
+                        <ul>
+                            <li>
+                                Rider, Visual Studio Code, Sublime Text, Notepad++, NeoVim, Emacs — show up with something
+                                suitable for reading and writing code.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Software for asset editing.</span>
+                        <ul>
+                            <li>
+                                I don't care if you're using Maya and Substance Painter or Blender and Krita.
+                                Software for editing 2D and 3D assets are a bare minimum. A proper Photoshop
+                                equivalent is highly recommended.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Something for screen sharing.</span>
+                        <ul>
+                            <li>
+                                I don't care if we use Google Meet, Zoom, Discord, Teamviewer, Parsec, or Jitsi.
+                                We just need something that'll let us work hands-on.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span>Some kind of Version Control.</span>
+                        <ul>
+                            <li>
+                                I don't care if it's Git, SVN, or Perforce. I don't care if it's connected to
+                                Github, Azure DevOps, or a box in your basement. Just have <em>something.</em>
+                            </li>
+                        </ul>
+                    </li>
+                </ol>
+                <p>
+                    While there are some programs I strongly recommend (PureRef, Excalidraw, Flameshot,
+                    Obisian/Trilium, Figma, etc.), I don't expect everyone to show up with those programs
+                    pre-installed and ready to go.
+                </p>
+            </section>
+        </article>
+    </div>
+</Wide>
