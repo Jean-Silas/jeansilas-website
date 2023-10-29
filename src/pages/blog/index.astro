@@ -1,13 +1,19 @@
 ---
 import { getCollection, getEntry, getEntries } from 'astro:content';
+
+import Wide from '@l/Wide.astro';
+import BigHeader from '@b/BigHeader.astro';
 import Base from '@l/Base.astro';
 import Article from '@md/Article.astro';
 
 const entry = await getEntry('blog', 'hello-world');
 const { Content } = await entry.render();
 ---
-<Base title="Jean-Silas Moor | Blog">
-    <Article>
-        <Content/>
-    </Article>
-</Base>
+<Wide title="Jean-Silas Moor | Blog">
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start "> 
+        <BigHeader/>
+        <Article>
+            <Content/>
+        </Article>
+    </div>
+</Wide>
