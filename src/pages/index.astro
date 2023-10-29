@@ -1,75 +1,70 @@
 ---
-import Base from '@l/Base.astro';
-import SideColumn from '@l/SideColumn.astro';
 import Wide from '@l/Wide.astro';
-import Header from '@b/Header.astro';
 import BigHeader from '@b/BigHeader.astro';
-import Footer from '@b/Footer.astro';
 import HL from '@e/HL.astro';
-
-import Calendar from '@c/cards/Calendar';
 import CalendarModal from '@c/cards/CalendarModal';
+
+import LongformLarge from '@c/blocks/LongformLarge.astro';
+import LongformSection from '@c/blocks/LongformSection.astro';
 ---
 
 <Wide title="Jean-Silas Moor: The ArtOps Guy">
-	<div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start ">
-		<BigHeader/>
-		<div class="w-fit ">
-				<article class="prose prose-invert bg-space-950 p-4 m-2 shadow-xl shadow-[#00000088] outline outline-1 outline-space-800">
-					<section class="mx-auto my-4 max-w-xl px-4 text-2xl-fluid">
-						<h2 class="mb-3 text-3xl">
-							Hi.<br />I'm JS.
-						</h2>
-						<p>I'm technically a techical artist. Sorta.</p>
-						<p>
-							I wear hats with titles like "Pipeline Architect" and "ArtOps Engineer." I make the
-							glue that helps studios manage complex asset production pipelines.
-						</p>
-						<p>
-							More specifically, I specialize in helping folks outside the gaming industry
-							integrate technologies like <strong>Unreal Engine</strong> and
-							<strong>Blender</strong> into their media pipelines.
-						</p>
-						<p>
-							That means I frequently work with architects, video production companies, internal
-							corporate media teams, and indie livestreaming productions.
-						</p>
-					</section>
-					<section class="mx-auto my-4 max-w-xl px-4 text-2xl-fluid">
-						<h2 class="mb-3 text-3xl">Projects I'm Excited About</h2>
-						<p>
-							As a part of bootstrapping my studio
-							<span class="font-bold">Wise<HL>Lich</HL> Syndicate</span>, I'm also spinning up a
-							knowledgebase and learning platform (tentatively) called the <span class="font-bold"
-								>Wise<HL>Lich</HL> Archive</span
-							>.
-						</p>
-						<p>
-							My intent in creating the <span class="font-bold">W<HL>L</HL>A</span>
-							 is to collect all of the common resources I point my clients to into a platform
-							that makes technical information a lot easier to digest.
-						</p>
-						<p>
-							And to have some fun with Astro, because I'm physically incapable of staying in my
-							lane.
-						</p>
-					</section>
-					<section class="mx-auto my-4 max-w-xl px-4 text-2xl-fluid">
-						<h2 class="mb-3 text-3xl">How to Work With Me</h2>
-						<p>
-							I'm still in the process of establishing a proper outsourcing and consulting studio,
-							<span class="font-bold">Wise<HL>Lich</HL> Syndicate</span>, for working with teams
-							outside of my personal network.
-						</p>
-						<p>
-							In the meantime, if we have friends in common, please feel free to reach out through
-							the scheduling link below.
-						</p>
-						<div class="ml-auto w-fit">
-							<CalendarModal client:visible />
-						</div>
-					</section>
-				</article>
-			</div>
-	</div>
+    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start">
+        <BigHeader />
+        <LongformLarge>
+            <LongformSection>
+                <h2>
+                    Hi.<br />I'm JS.
+                </h2>
+                <p>I'm technically a techical artist. Sorta.</p>
+                <p>
+                    I wear hats with titles like "Pipeline Architect" and "ArtOps Engineer." I make
+                    the glue that helps studios manage complex asset production pipelines.
+                </p>
+                <p>
+                    More specifically, I specialize in helping folks outside the gaming industry
+                    integrate technologies like <strong>Unreal Engine</strong> and
+                    <strong>Blender</strong> into their media pipelines.
+                </p>
+                <p>
+                    That means I frequently work with architects, video production companies,
+                    internal corporate media teams, and indie livestreaming productions.
+                </p>
+            </LongformSection>
+            <LongformSection>
+                <h2>Projects I'm Excited About</h2>
+                <p>
+                    As a part of bootstrapping my studio
+                    <strong>Wise<HL>Lich</HL> Syndicate</strong>, I'm also spinning up
+                    a knowledgebase and learning platform (tentatively) called the <strong>Wise<HL>Lich</HL> Archive</strong
+                    >.
+                </p>
+                <p>
+                    My intent in creating the <strong>W<HL>L</HL>A</strong>
+                     is to collect all of the common resources I point my clients to into a platform
+                    that makes technical information a lot easier to digest.
+                </p>
+                <p>
+                    And to have some fun with Astro, because I'm physically incapable of staying in
+                    my lane.
+                </p>
+            </LongformSection>
+            <LongformSection>
+                <h2>How to Work With Me</h2>
+                <p>
+                    I'm still in the process of establishing a proper outsourcing and consulting
+                    studio,
+                    <strong>Wise<HL>Lich</HL> Syndicate</strong>, for working with
+                    teams outside of my personal network.
+                </p>
+                <p>
+                    In the meantime, if we have friends in common, please feel free to reach out
+                    through the scheduling link below.
+                </p>
+                <div class="ml-auto w-fit">
+                    <CalendarModal client:visible />
+                </div>
+            </LongformSection>
+        </LongformLarge>
+    </div>
 </Wide>
