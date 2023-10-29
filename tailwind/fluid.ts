@@ -3,10 +3,13 @@ import plugin from 'tailwindcss/plugin';
 export default plugin(({ addUtilities, matchUtilities, theme }) => {
     addUtilities({
         '.text-5xl-fluid': {
-            'font-size': 'clamp(1rem, 15vw, 3rem)',
+            'font-size': 'clamp(1.5rem, 15vw, 3rem)',
         },
         '.text-4xl-fluid': {
             'font-size': 'clamp(1.5rem, 10vw, 3rem)',
+        },
+        '.text-3xl-fluid': {
+            'font-size': 'clamp(1.5rem, 10vw, 2.25rem)',
         },
         '.text-2xl-fluid': {
             'font-size': 'clamp(0.75rem, 8vw, 1.5rem)',

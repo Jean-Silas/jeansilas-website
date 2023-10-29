@@ -5,6 +5,8 @@ interface Props {
     class?: string;
 }
 
+import FancyHeader from '@c/elements/FancyHeader.astro';
+
 const { title, price, class: _class = "" } = Astro.props;
 
 const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
@@ -25,10 +27,13 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
                 outline-1
                 outline-space-800
                 ${inner_class}
-                `>
-        <h2 class=`mb-3 text-fc-[1.5rem_5cqw_3rem] font-black`>
+                `> 
+        <FancyHeader class="text-fc-[1.5rem_5cqw_3rem] mb-3 mt-0 ml-auto border-none">
             {title}
-        </h2>
+        </FancyHeader>
+        <!-- <h2 class=`mb-3 text-fc-[1.5rem_5cqw_3rem] font-black`>
+            {title}
+        </h2> -->
         <div class="grid
                     grid-rows-[auto_3fr]
                     @lg:grid-cols-2
@@ -37,7 +42,7 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
                     align-top
                     h-full
                     ">
-            <picture class=`bg-pink-500 @lg:aspect-square aspect-[21/9] w-[90%] max-w-full ${picture_class}`>
+            <picture class=` @lg:aspect-square aspect-[21/9] w-[90%] max-w-full ${picture_class}`>
             </picture>
             <div class="grid grid-rows-[3fr_auto] h-full">
                 <section class=`${text_class}`>

@@ -1,0 +1,30 @@
+---
+interface Props {
+    class?: string;
+}
+
+const {class: _class = ""} = Astro.props;
+---
+
+<h2 class=`
+    whitespace-nowrap
+    mx-0
+    mt-4 
+    w-fit
+    border-r-[16px]
+    border-bone-400
+    pr-5
+    text-right
+    font-black
+
+    after:w-full
+    after:h-2
+    after:border-b-2 
+    after:border-bone-400 
+    after:block
+    ${_class}
+    `
+>
+    <slot/>
+</h2>
+
