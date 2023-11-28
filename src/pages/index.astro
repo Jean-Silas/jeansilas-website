@@ -6,16 +6,29 @@ import CalendarModal from '@c/cards/CalendarModal';
 
 import LongformLarge from '@c/blocks/LongformLarge.astro';
 import LongformSection from '@c/blocks/LongformSection.astro';
+import FancyHeader from '@c/elements/FancyHeader.astro';
+
+import Article from '@c/md/Article.astro';
+
 ---
 
 <Wide title="Jean-Silas Moor: The ArtOps Guy">
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start">
-        <BigHeader />
-        <LongformLarge>
-            <LongformSection>
-                <h2>
-                    Hi.<br />I'm JS.
-                </h2>
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start">
+        <BigHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
+        <div class="
+            max-w-5xl
+            grid
+            grid-cols-1
+            gap-4
+            xl:grid-cols-2
+            justify-stretch
+            justify-items-center
+            p-4
+            ">
+            <Article>
+                <FancyHeader class="text-3xl-fluid">
+                    Hi. I'm JS.
+                </FancyHeader>
                 <p>I'm technically a techical artist. Sorta.</p>
                 <p>
                     I wear hats with titles like "Pipeline Architect" and "ArtOps Engineer." I make
@@ -30,13 +43,11 @@ import LongformSection from '@c/blocks/LongformSection.astro';
                     That means I frequently work with architects, video production companies,
                     internal corporate media teams, and indie livestreaming productions.
                 </p>
-            </LongformSection>
-            <LongformSection>
                 <h2>Projects I'm Excited About</h2>
                 <p>
                     As a part of bootstrapping my studio
-                    <strong>Wise<HL>Lich</HL> Syndicate</strong>, I'm also spinning up
-                    a knowledgebase and learning platform (tentatively) called the <strong>Wise<HL>Lich</HL> Archive</strong
+                    <strong>The Wise<HL>Lich</HL> Syndicate</strong>, I'm also spinning up
+                    a knowledgebase and learning platform (tentatively) called the <strong>The Wise<HL>Lich</HL> Archive</strong
                     >.
                 </p>
                 <p>
@@ -48,13 +59,11 @@ import LongformSection from '@c/blocks/LongformSection.astro';
                     And to have some fun with Astro, because I'm physically incapable of staying in
                     my lane.
                 </p>
-            </LongformSection>
-            <LongformSection>
                 <h2>How to Work With Me</h2>
                 <p>
                     I'm still in the process of establishing a proper outsourcing and consulting
                     studio,
-                    <strong>Wise<HL>Lich</HL> Syndicate</strong>, for working with
+                    <strong>The Wise<HL>Lich</HL> Syndicate</strong>, for working with
                     teams outside of my personal network.
                 </p>
                 <p>
@@ -64,7 +73,7 @@ import LongformSection from '@c/blocks/LongformSection.astro';
                 <div class="ml-auto w-fit">
                     <CalendarModal client:visible />
                 </div>
-            </LongformSection>
-        </LongformLarge>
+            </Article>
+        </div>
     </div>
 </Wide>

@@ -12,11 +12,12 @@ export default plugin(({ addUtilities, matchUtilities, theme }) => {
             'font-size': 'clamp(1.5rem, 10vw, 2.25rem)',
         },
         '.text-2xl-fluid': {
-            'font-size': 'clamp(0.75rem, 8vw, 1.5rem)',
-            'line-height': 'clamp(1.75rem, 8vw, 2rem)',
+            'font-size': 'clamp(0.95rem, 3.6vw, 1.5rem)',
+            
         },
         '.text-xl-fluid': {
-            'font-size': 'clamp(0.75rem, 8vw, 1.125rem)',
+            'font-size': 'clamp(0.75rem, 120vw, 1.25rem)',
+            'line-height': 'clamp(1.5rem, 3.6vw, 2rem)',
         },
 
     });

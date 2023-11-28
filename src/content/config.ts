@@ -22,6 +22,15 @@ const blogCollection = defineCollection({
     }),
 });
 
+const blockCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        ...contentBase,
+        image: z.string().optional(),
+    }),
+});
+
 export const collections = {
-    blog: blogCollection
+    blog: blogCollection,
+    blocks: blockCollection
 }

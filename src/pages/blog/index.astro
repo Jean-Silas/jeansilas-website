@@ -10,10 +10,21 @@ const entry = await getEntry('blog', 'hello-world');
 const { Content } = await entry.render();
 ---
 <Wide title="Jean-Silas Moor | Blog">
-    <div class="grid grid-cols-1 md:grid-cols-[1fr_2fr] items-start "> 
-        <BigHeader/>
-        <Article>
-            <Content/>
-        </Article>
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start"> 
+        <BigHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
+        <div class="
+            max-w-5xl
+            grid
+            grid-cols-1
+            gap-4
+            xl:grid-cols-2
+            justify-stretch
+            justify-items-center
+            p-4
+        ">
+            <Article>
+                <Content/>
+            </Article>
+        </div>
     </div>
 </Wide>

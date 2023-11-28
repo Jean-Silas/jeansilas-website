@@ -1,27 +1,31 @@
 ---
+interface Props {
+    class: string;
+}
 
+const {class: _class = ""} = Astro.props;
 ---
 
-<header class="mx-auto flex max-w-[90rem] flex-wrap items-center justify-between gap-4 p-3">
-    <div class="">
-        <div class="ml-2 mt-4 w-fit">
-            <h1
-                class="whitespace-nowrap border-r-[24px] border-bone-400 pr-5 text-right font-black text-4xl-fluid"
+<aside class=`top-0  flex  flex-wrap items-center justify-between gap-4 p-3 ${_class}`>
+    <div class="w-full">
+        <div class=" mt-4 w-full">
+            <h1 class="whitespace-nowrap
+                        
+                        border-r-[24px]
+                        border-bone-400
+                        pr-5
+                        text-right
+                        font-black
+                        text-4xl-fluid"
             >
-                Jean-Silas<br />Moor
+                Jean-Silas<br>Moor
             </h1>
-            <p class="mt-2 border-b-2 border-bone-400 pb-2 text-right text-xl-fluid">
-                I Make Pipelines Go Brr.
-            </p>
+            <ul class="mt-2 border-b-2 border-bone-400 pb-2 text-right text-xl-fluid">
+                <li class="">I Make Art Pipelines Go Brrrrr.</li>
+            </ul>
             <div class="h-6 overflow-hidden ">
                 <div class="h-4 w-[98%] m-auto bg-gradient-to-b from-[#00000022] to-transparent blur-sm"/>
             </div>
         </div>
     </div>
-    <!-- <div class=" mx-auto">
-        <menu class=" mx-auto text-center px-8 text-2xl text-bone-300 space-y-2 font-bold ">
-            <li>Blog</li>
-            <li>Resources</li>
-        </menu>
-    </div> -->
-</header>
+</aside>

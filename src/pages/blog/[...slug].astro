@@ -3,7 +3,8 @@ export const prerender = true;
 
 import { getCollection } from 'astro:content';
 
-import Base from '@l/Base.astro';
+import Wide from '@l/Wide.astro';
+import BigHeader from '@c/blocks/BigHeader.astro';
 import Article from '@md/Article.astro';
 
 // 1. Generate a new path for every collection entry
@@ -21,8 +22,22 @@ const { Content } = await entry.render();
 
 const title = `JSM | ${entry.data.title}`;
 ---
-<Base title={title}>
-    <Article>
-        <Content/>
-    </Article>
-</Base>
+<Wide title="Jean-Silas Moor | Blog">
+    <div class="grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start"> 
+        <BigHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
+        <div class="
+            max-w-5xl
+            grid
+            grid-cols-1
+            gap-4
+            xl:grid-cols-2
+            justify-stretch
+            justify-items-center
+            p-4
+        ">
+            <Article>
+                <Content/>
+            </Article>
+        </div>
+    </div>
+</Wide>

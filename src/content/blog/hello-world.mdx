@@ -8,10 +8,36 @@ tags:
 
 # Hello World
 
-Tempor labore eu sint nulla excepteur occaecat magna minim adipisicing veniam cupidatat deserunt. Laborum aliqua fugiat est eiusmod velit excepteur qui ipsum dolor elit ad eiusmod fugiat. Pariatur culpa nostrud consequat commodo ipsum minim do in amet magna nisi laborum.
+This website's a bit of a tech-experiment (stuff I play with here gets recycled into the main Wiselich site), so don't mind the jank; it's part of the charm.
 
-Qui ipsum veniam elit ad anim sunt excepteur et ut duis elit sunt exercitation nulla. Consequat nulla fugiat laboris consectetur labore irure velit tempor eu duis nisi minim in voluptate. Culpa ipsum in veniam voluptate occaecat labore voluptate consequat quis. Deserunt aliqua dolore officia in adipisicing exercitation mollit magna laborum sunt. Enim deserunt amet in esse. Culpa consequat consectetur officia eiusmod nisi eu culpa et occaecat culpa cupidatat tempor ex.
+Stack-wise, this site is pretty simple: Astro, with Tailwind and a teeny tiny bit of React, hosted on Vercel.
+Most text longer than a paragraph is written as markdown.
+The only vaguely fancy thing I've done so far is set up some utility classes for container queries and fluid text.
 
-Incididunt amet cillum enim magna officia commodo magna ea velit. Labore voluptate nostrud mollit laborum minim in proident excepteur sit in dolore. Dolor nisi minim Lorem et enim ad id veniam. Dolore sunt magna excepteur do ex incididunt nisi officia eu mollit dolor. Adipisicing dolor non magna exercitation exercitation laboris mollit.
+On the design front, I'm also keeping things simple.
+Crisp edges, clear z-depth, simple color choices, clear content blocking — the goal here is a visual langage that emphasizes *composability.*
 
-Amet occaecat amet esse aliqua ex aliqua cillum et ex consectetur id. Laborum culpa cupidatat velit mollit aliqua ut dolor eiusmod sint irure laborum elit labore nulla. Commodo enim culpa culpa laboris qui voluptate et duis sit sint amet. Ullamco incididunt et velit commodo anim qui et in minim amet incididunt. Deserunt fugiat sit sint fugiat.
+Why? Because the end-goal is a content model that works for both blogging *and* graph-modeled documentation archives.
+
+## ...What the hell is graph-modeled documentation?
+
+Something I frequently kvetch about is how most documentation is rarely written in a way that lines up with how people read it.
+
+Think about how people tend to read documentation — in a rush, narrowly searching for the solution to a specific problem, and then either moving laterally or zooming out to a broader problem-domain.
+
+Even when documentation teams are on-point with their Diátaxis categories and learning-paths, the documentation they produce tends to be vaguely book-shaped. 
+The hierarchy of topics is rarely invertable.
+The atomicity of the content is awkward.
+**The pages might be organized into a tree, but that tree makes for a pretty shitty graph.**
+
+And that's where graph-modeling comes in.
+
+Graph-modeling boils down to taking page/chapter-orientend content and breaking it down into smaller, searchable, reusable, 'nodes' of data.
+If you've ever used personal-knowledgebase tools like Obisian, you'll have a pretty good idea of where this is going.
+
+Good documentation should be like a database.
+You should be able to query it and construct views that facilitate specific goals.
+
+And I'm using *this* site to hash out the bones of that for the main Wiselich site.
+
+Cheers.
