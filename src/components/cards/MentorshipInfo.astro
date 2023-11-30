@@ -12,7 +12,7 @@ const { title, price, class: _class = "" } = Astro.props;
 const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
 ---
 
-<div class=`w-full   aspect-[21/9] ${outer_class}`>
+<div class=`w-full  h-full aspect-[21/9] ${outer_class}`>
     <div class=`bg-space-950
                 @container
                 grid
@@ -29,17 +29,14 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
                 outline-space-800
                 ${inner_class}
                 `> 
-        <FancyHeader class="text-fc-[1.5rem_5cqw_3rem] mb-3 mt-0 ml-auto border-none row-start-1 col-start-1 col-span-2">
+        <FancyHeader class="text-fc-[0.5rem_9.5cqw_3rem] mb-3 mt-0 ml-auto border-none row-start-1 col-start-1 col-span-2">
             {title}
         </FancyHeader>
-        <!-- <h2 class=`mb-3 text-fc-[1.5rem_5cqw_3rem] font-black`>
-            {title}
-        </h2> -->
         <div class="
                 relative
                 col-span-2
-                @sm:row-start-1
-                @sm:row-span-2
+                row-span-1
+                row-start-2
                 @sm:col-start-1
                 @sm:col-span-1
                 grid

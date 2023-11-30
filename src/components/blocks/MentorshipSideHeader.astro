@@ -6,7 +6,7 @@ interface Props {
 const {class: _class = ""} = Astro.props;
 ---
 
-<aside class=`top-0  flex  flex-wrap items-center justify-between gap-4 p-3 ${_class}`>
+<aside class=`top-0  flex  flex-wrap items-center justify-between gap-4 px-3 ${_class}`>
     <div class="w-full">
         <div class=" mt-4 w-full">
             <h1 class="whitespace-nowrap
@@ -26,15 +26,7 @@ const {class: _class = ""} = Astro.props;
                 <li>Project-focused</li>
                 <li>Yes, there will be homework</li>
             </ul>
-            <div class="h-6 overflow-hidden ">
-                <div class="h-4 w-[98%] m-auto bg-gradient-to-b from-[#00000022] to-transparent blur-sm"/>
-            </div>
+
         </div>
     </div>
-    <!-- <div class=" mx-auto">
-        <menu class=" mx-auto text-center px-8 text-2xl text-bone-300 space-y-2 font-bold ">
-            <li>Blog</li>
-            <li>Resources</li>
-        </menu>
-    </div> -->
 </aside>
