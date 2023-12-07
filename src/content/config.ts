@@ -30,7 +30,19 @@ const blockCollection = defineCollection({
     }),
 });
 
+const serviceCollection = defineCollection({
+    type: 'content',
+    schema: z.object({
+        title: z.string(),
+        detail: z.string(),
+        status: z.enum(['open', 'closed', 'waitlist']),
+        tags: z.string().array().optional(),
+        image: z.string().optional(),
+    }),
+});
+
 export const collections = {
     blog: blogCollection,
-    blocks: blockCollection
+    blocks: blockCollection,
+    services: serviceCollection
 }

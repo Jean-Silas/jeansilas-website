@@ -1,0 +1,12 @@
+---
+interface Props {
+    kind?: "summary" | "warning" | "info"
+    slug?: string
+}
+
+const { kind } = Astro.props
+---
+
+<section class="border-l-4 border-space-600 pl-4 m-4  pb-4 shadow-md">
+    <slot></slot>
+</section>

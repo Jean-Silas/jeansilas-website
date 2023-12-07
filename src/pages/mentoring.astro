@@ -4,6 +4,7 @@ import { getCollection, getEntry, getEntries } from 'astro:content';
 import Wide from '@l/Wide.astro';
 
 import MentorshipInfo from '@c/cards/MentorshipInfo.astro';
+import MentoshipAutoCard from '@c/cards/MentoshipAutoCard.astro';
 import MentorshipSideHeader from '@c/blocks/MentorshipSideHeader.astro';
 
 import Article from '@c/md/Article.astro';
@@ -24,11 +25,9 @@ const { Content } = await entry.render();
                     justify-stretch
                     justify-items-center
                     p-2
-                    
             ">
             <div class="col-span-12 w-full">
                 <h2 class="
-                    
                     text-5xl-fluid
                     font-black
                     text-center
@@ -40,31 +39,9 @@ const { Content } = await entry.render();
                 </div>
                 <hr class="w-1/2 mx-auto border-bone-400 border-b my-1 ">
             </div>
-
-            <MentorshipInfo title="Interaction Design" price="8-16 hours per month" class="col-span-12 2xl:col-start-1 2xl:col-span-6 max-w-4xl">
-                <span class="font-bold text-2xl block mb-1">At A Glance:</span>
-                <ul class="list-outside ml-4 list-disc text-lg">
-                    <li class="mb-2">For folks who know <em>how</em> to program, but not <em>what</em> to program.</li>
-                    <li class="mb-2">Strong focus on systems over features.</li>
-                    <li class="mb-2">I will make you make state machines. Lots of state machines.</li>
-                </ul>
-            </MentorshipInfo>
-            <MentorshipInfo title="Project Management" price="12-20 hours per month" class="col-span-12 2xl:col-start-7 2xl:col-span-6 max-w-4xl"  >
-                <span class="font-bold text-2xl block mb-1">At A Glance:</span>
-                <ul class="list-outside ml-4 list-disc text-lg">
-                    <li class="mb-2">For folks who have shipped small/solo projects, who want to ship larger/team projects.</li>
-                    <li class="mb-2">Strong focus on version control, communication tools, and writing documentation.</li>
-                    <li class="mb-2">Python knowledge is recommended.</li>
-                </ul>
-            </MentorshipInfo>
-            <MentorshipInfo title="ArtOps Management" price="Flexible" class="col-span-12  max-w-4xl">
-                <span class="font-bold text-2xl block mb-1">At A Glance:</span>
-                <ul class="list-outside ml-4 list-disc text-lg">
-                    <li class="mb-2">For folks who with sold design and asset-creation skills.</li>
-                    <li class="mb-2">Strong focus on the technical side of asset creation.</li>
-                    <li class="mb-2">Frequently involves making small Blender add-ons.</li>
-                </ul>
-            </MentorshipInfo>
+            <MentoshipAutoCard slug="mentoring/interaction-design", class="col-span-12 2xl:col-start-1 2xl:col-span-6 max-w-4xl"/>
+            <MentoshipAutoCard slug="mentoring/project-management", class="col-span-12 2xl:col-start-7 2xl:col-span-6 max-w-4xl"/>
+            <MentoshipAutoCard slug="mentoring/artops",             class="col-span-12  max-w-4xl"/>
             <hr class="w-1/2 mx-auto border-bone-400 border-b my-6 col-span-12">
             <Article>
                 <Content/>

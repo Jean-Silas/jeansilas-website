@@ -38,8 +38,35 @@ export default plugin(
                                 fontSize: '1.125em',
                                 'margin-top': 'unset',
                             },
+                            '.card': {
+                                ul: {
+                                    li: {
+
+                                    }
+                                }
+                            }
                         },
                     },
+                    card: {
+                        css: {
+                            '--tw-prose-body': "white",
+                            '--tw-prose-headings': "white",
+                            '--tw-prose-lead': "white",
+                            '--tw-prose-links': "white",
+                            '--tw-prose-bold': "white",
+                            '--tw-prose-counters': "white",
+                            '--tw-prose-bullets': "white",
+                            '--tw-prose-hr': "white",
+                            '--tw-prose-quotes': "white",
+                            '--tw-prose-quote-borders': "white",
+                            '--tw-prose-captions': "white",
+                            '--tw-prose-code': "white",
+                            '--tw-prose-pre-code': "white",
+                            '--tw-prose-pre-bg': "white",
+                            '--tw-prose-th-borders': "white",
+                            '--tw-prose-td-borders': "white"
+                        }
+                    }
                 }),
             },
         },

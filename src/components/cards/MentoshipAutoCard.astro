@@ -1,17 +1,28 @@
 ---
 interface Props {
-    title: string;
-    price: string;
+    slug: string;
     class?: string;
 }
 
 import { twMerge } from 'tailwind-merge'
 
 import FancyHeader from '@c/elements/FancyHeader.astro';
+import { getEntryBySlug } from 'astro:content';
 
-const { title, price, class: _class = "" } = Astro.props;
+const { slug, class: _class = "" } = Astro.props;
+
+const entry = await getEntryBySlug('services', slug);
+// @ts-ignore
+const { Content } = await entry.render();
 
 const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
+
+const status_color = entry?.data.status == "open" ? "text-green-500"
+                    : entry?.data.status == "closed" ? "text-red-500"
+                    : entry?.data.status == "waitlist" ? "text-yellow-500"
+                    : "text-pink-400"
+
+console.log(entry)
 ---
 
 <div class={twMerge("w-full  h-full aspect-[21/9]", outer_class)}>
@@ -33,7 +44,7 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
         inner_class)}
     > 
         <FancyHeader class="text-fc-[0.5rem_9.5cqw_3rem] mb-3 mt-0 ml-auto border-none row-start-1 col-start-1 col-span-2">
-            {title}
+            {entry?.data.title}
         </FancyHeader>
         <div class="
                 relative
@@ -62,12 +73,34 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
             col-start-1
             col-span-2
         ">
-            <section class=`${text_class}`>
-                <slot/>
+            <section class=`
+                prose
+                prose-card
+                prose-h3:font-bold
+                prose-h3:text-2xl
+                prose-h3:mb-1
+                prose-ul:list-outside
+                prose-ul:ml-4
+                prose-ul:pl-0
+                prose-ul:list-dist
+                prose-ul:text-lg
+                prose-li:mb-2
+                text-lg
+                 ${text_class}`>
+                <Content/>
             </section>
-            <div class="ml-auto w-fit text-xl p-2 ">
-                {price}
+        </div>
+        <div class="w-full text-xl p-2 grid grid-cols-2 col-span-2 gap-4">
+            <div class="capitalize">
+                Status: 
+                <span class={status_color}>
+                    {entry?.data.status}
+                </span>
+            </div>
+            <div class="text-right">
+                {entry?.data.detail}
             </div>
         </div>
     </div>
+    
 </div>

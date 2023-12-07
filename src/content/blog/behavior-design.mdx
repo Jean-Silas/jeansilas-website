@@ -1,0 +1,101 @@
+---
+title: "Behavior Design: AI, State Machines, Ability Systems, and More"
+status: draft
+tags:
+    - design
+---
+
+import Callout from "@c/md/Callout.astro"
+
+# Behavior Design: AI, State Machines, Ability Systems, and More
+
+<Callout kind="summary">
+    **TL;DR:**
+    "Good" behavior design typically comes down to finessing *how* entities make decisions.
+    You should be giving your players more things to anticipate than just attack patterns and proximity triggers; **it should feels like entities are responding to their specific playstyle.**
+    
+    The hard part, of course, is doing that in a way that's consistent and scalable. Which is why we're going to explore the following premise:
+
+    > All AI decision making should take place over multiple frames and involve observability, perception, and confidence factors that are, themselves, interpolated over time. 
+</Callout>
+
+One of my favorite things to see in games are enemies that are aggressive *until you land a headshot.*
+It's a form of reactivity that rewards skillful play and it can lead to some very interesting feedback loops.
+
+But what's the best way to build that kind of behavior?
+
+## Reactivity
+
+### Fake Reactivity
+
+Naive approaches to behavior design generally boil down to an `decision` → `delay` → `action` → `delay` loop,
+where entities have nigh-perfect perception, single-frame decision making, and series of non-optimal behaviors to pick from semi-randomly.
+
+Naive approaches involve lots of behavior *switching,* but they can't really make good or bad decisions; it's all hard thresholds, booleans, and enum checks, with some ham-fisted randomness thrown in.
+There's no *interpretation* happening.
+
+You can, of course, manually layer in vaguely-human-feeling behavior, but in naive approaches that tends to mean a proliferation of booleans and hard branching.
+If you're just grafting in something simple like headshot reactivity, it isn't too bad, but it can quickly become unmaintainable. 
+
+### Human Reactivity
+
+The average human reaction time (to visual cues) falls somewhere in the 150 to 300 millisecond range.
+Let's call that 9 to 18 frames at 60fps, just to keep the numbers simple. 
+
+In simple perceive-intercept tasks (e.g. catching a falling object that is within arm's reach), we tend to need 400 to 600 milliseconds of observation time.
+[Read This](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5501917/) [and this](https://www.frontiersin.org/articles/10.3389/fphys.2023.1266332/full).
+Lets call that 24 to 36 frames at 60fps.
+
+The more background stimuli there are, the slower we respond. 
+Total Perception Reaction Time (e.g. the full perceive → observe → react loop) in distracting real world environments can often end up in the ballpark of 1000 to 2000 milliseconds.
+60 to 120 frames at 60fps.
+
+And all of that is for relatively simple motor control tasks.
+Catching things, pointing at things, pressing buttons; there's minimal *conscious* branching here.
+
+Similarly, these numbers don't account for moving targets, interruptions, or other external pressures.
+These numbers give us a ballpark for average-minimums, but they don't give us relationships between observation times and accuracy.
+
+We shouldn't get lost in the human side of it, though — how do we account for those factors within the context of behavior design?
+
+#### Pretending You're Human (The Right Way)
+
+A `perception-decision` → `delay` → `action` → `delay` loop can emulate the Perception Reaction Time of a human in a lab environment, but it doesn't handle environmental pressure and interruptions very well.
+
+What we need instead is a `perception over time` → `decision over time` → `action over time` loop, where each step relies on interruptible estimate-refining functions.
+With this approach, changing the time given to each step changes the accuracy of their results.
+It's inherently reactive to pressure.
+
+<Callout kind="aside">
+    ##### Isn't That Computationally Intense?
+
+    Yes. It is.
+
+    Thankfully, the biggest performance optimization you can do — reducing pointer indirection by copying values into pre-allocated spans/arrays and operating on slightly-stale data — aligns with the weaknesses of human perception.
+    
+    Your hot loop can be pretty darn hot, without much of a performance impact, when you use the right data structures and allocation strategies.
+</Callout>
+
+Using this interruptible estimate-refining pattern as your base, you can build all sorts of "human-like" patterns into your behavior system.
+
+## Decision Making
+
+### Fake Decision Making
+
+Naive decision making tends to rely on hard branches, selectively softened by biased random pick functions.
+
+### Human Decision Making
+
+A highly simplified model of human decision making tends to consist of:
+1. Scenario Recognition
+2. Action Enumeration
+3. Action Cost Assessment
+4. Failure Cost Assessment
+5. Success Value Assessment
+6. Action Selection
+7. Action Execution
+
+
+
+
+

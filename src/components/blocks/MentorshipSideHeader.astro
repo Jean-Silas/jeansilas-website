@@ -3,10 +3,12 @@ interface Props {
     class: string;
 }
 
+import { twMerge } from 'tailwind-merge'
+
 const {class: _class = ""} = Astro.props;
 ---
 
-<aside class=`top-0  flex  flex-wrap items-center justify-between gap-4 px-3 ${_class}`>
+<aside class={twMerge("top-0  flex  flex-wrap items-center justify-between gap-4 px-3", _class)}>
     <div class="w-full">
         <div class=" mt-4 w-full">
             <h1 class="whitespace-nowrap
