@@ -1,0 +1,6 @@
+import "@fontsource-variable/martian-mono"
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

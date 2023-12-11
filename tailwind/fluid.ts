@@ -16,8 +16,8 @@ export default plugin(({ addUtilities, matchUtilities, theme }) => {
             
         },
         '.text-xl-fluid': {
-            'font-size': 'clamp(0.75rem, 120vw, 1.25rem)',
-            'line-height': 'clamp(1.5rem, 3.6vw, 2rem)',
+            'font-size': 'clamp(0.15rem, 120vw, 1.25rem)',
+            
         },
 
     });
