@@ -2,6 +2,7 @@
 import { getCollection, getEntry, getEntries } from 'astro:content';
 
 import Wide from '@l/Wide.astro';
+import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
 
 import MentorshipInfo from '@c/cards/MentorshipInfo.astro';
 import MentoshipAutoCard from '@c/cards/MentoshipAutoCard.astro';
@@ -14,7 +15,7 @@ const { Content } = await entry.render();
 ---
 
 <Wide title="Unreal Engine Mentorships | Feature Design, ArtOps, Project Management ">
-    <div class="grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start ">
+    <WideLeftLogo>
         <MentorshipSideHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
         <div class="
                     max-w-8xl
@@ -47,5 +48,5 @@ const { Content } = await entry.render();
                 <Content/>
             </Article>
         </div>
-    </div>
+    </WideLeftLogo>
 </Wide>

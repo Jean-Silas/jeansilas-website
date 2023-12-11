@@ -1,7 +1,9 @@
 ---
 import { getCollection, getEntry, getEntries } from 'astro:content';
+import { blogTitles } from "@u/ContentMap"
 
 import Wide from '@l/Wide.astro';
+import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
 import BigHeader from '@b/BigHeader.astro';
 import Base from '@l/Base.astro';
 import Article from '@md/Article.astro';
@@ -10,8 +12,40 @@ const entry = await getEntry('blog', 'hello-world');
 const { Content } = await entry.render();
 ---
 <Wide title="Jean-Silas Moor | Blog">
-    <div class="grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start"> 
-        <BigHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
+    <WideLeftLogo > 
+        <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center ">
+            <BigHeader class="w-fit ml-auto lg:min-w-[24rem]"/>
+            <div class="outline
+                        outline-1
+                        outline-space-800
+                        shadow-xl
+                        bg-space-950
+                        p-6 
+                        max-w-4xl
+                        mx-2
+                        unfolded:mx-4
+                        w-auto
+                        lg:w-[360px]
+                        lg:ml-auto
+                        lg:mr-2
+                        ">
+                <h2 class="border-b border-space-800 pb-1 text-lg">
+                    Recent Posts
+                </h2>
+                <!-- TODO: Componentify -->
+                <ul class="list-disc list-outside pl-4 mt-2">
+                    {
+                    blogTitles.map((post) => (
+                        <li class="mb-2">
+                            <a href=`/blog/${post.slug}` class="hover:text-space-400">
+                                {post.title}
+                            </a>
+                        </li>
+                    ))
+                    }
+                </ul>
+            </div>
+        </div>
         <div class="
             max-w-5xl
             grid
@@ -27,5 +61,5 @@ const { Content } = await entry.render();
                 <Content/>
             </Article>
         </div>
-    </div>
+    </WideLeftLogo>
 </Wide>

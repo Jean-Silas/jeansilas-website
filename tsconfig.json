@@ -9,7 +9,8 @@
             "@e/*": ["src/components/elements/*"],
             "@md/*": ["src/components/md/*"],
             "@l/*": ["src/layouts/*"],
-            "@p/*": ["src/pages/*"]
+            "@p/*": ["src/pages/*"],
+            "@u/*": ["src/utils/*"]
         },
         "jsx": "react-jsx",
         "jsxImportSource": "react"

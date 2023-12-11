@@ -8,6 +8,6 @@ import { twMerge } from 'tailwind-merge'
 
 const {class: _class = ""} = Astro.props;
 ---
-<div class:list={[twMerge("grid grid-cols-1 lg:grid-cols-[auto_3fr] items-start ", _class)]}>
+<div class:list={[twMerge("grid grid-cols-1 lg:grid-cols-[400px_3fr] items-start ", _class)]}>
     <slot/>
 </div>
