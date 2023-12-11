@@ -12,6 +12,7 @@ const entry = await getEntry('blog', 'hello-world');
 const { Content } = await entry.render();
 ---
 <Wide title="Jean-Silas Moor | Blog">
+    <meta name="description" content="The ArtOps Guy's Blog" slot="head"/>
     <WideLeftLogo > 
         <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center ">
             <BigHeader class="w-fit ml-auto lg:min-w-[24rem]"/>

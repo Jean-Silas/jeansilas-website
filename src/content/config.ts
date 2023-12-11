@@ -19,6 +19,7 @@ const blogCollection = defineCollection({
     schema: z.object({
         ...contentBase,
         image: z.string().optional(),
+        description: z.string().optional(),
     }),
 });
 
