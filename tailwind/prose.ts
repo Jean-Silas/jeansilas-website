@@ -10,7 +10,6 @@ export default plugin(
                 // @ts-ignore
                 typography: ({ theme }) => ({
                     DEFAULT: {
-
                         css: {
                             // "Globals"
                             fontFamily: 'Montserrat Variable, sans-serif',
@@ -74,6 +73,7 @@ export default plugin(
                     },
                     article: {
                         css: {
+                            // Colors
                             '--tw-prose-body': theme('colors.space[100]'),
                             '--tw-prose-headings': "white",
                             '--tw-prose-lead': theme('colors.space[200]'),

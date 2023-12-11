@@ -26,7 +26,7 @@ But what's the best way to build that kind of behavior?
 
 ## Reactivity
 
-### Fake Reactivity
+### *Fake* Reactivity
 
 Naive approaches to behavior design generally boil down to an `decision` → `delay` → `action` → `delay` loop,
 where entities have nigh-perfect perception, single-frame decision making, and series of non-optimal behaviors to pick from semi-randomly.
@@ -37,7 +37,7 @@ There's no *interpretation* happening.
 You can, of course, manually layer in vaguely-human-feeling behavior, but in naive approaches that tends to mean a proliferation of booleans and hard branching.
 If you're just grafting in something simple like headshot reactivity, it isn't too bad, but it can quickly become unmaintainable. 
 
-### Human Reactivity
+### *Human* Reactivity
 
 The average human reaction time (to visual cues) falls somewhere in the 150 to 300 millisecond range.
 Let's call that 9 to 18 frames at 60fps, just to keep the numbers simple. 

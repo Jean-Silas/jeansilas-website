@@ -1,4 +1,6 @@
 ---
+import { getCollection, getEntry, getEntries } from 'astro:content';
+
 import Wide from '@l/Wide.astro';
 import BigHeader from '@b/BigHeader.astro';
 import HL from '@e/HL.astro';
@@ -10,6 +12,8 @@ import FancyHeader from '@c/elements/FancyHeader.astro';
 
 import Article from '@c/md/Article.astro';
 
+const entry = await getEntry('blocks', 'homepage');
+const { Content } = await entry.render();
 ---
 
 <Wide title="Jean-Silas Moor: The ArtOps Guy">
@@ -27,50 +31,7 @@ import Article from '@c/md/Article.astro';
             unfolded:p-4
             ">
             <Article>
-                <FancyHeader class="text-3xl-fluid">
-                    Hi. I'm JS.
-                </FancyHeader>
-                <p>I'm technically a techical artist. Sorta.</p>
-                <p>
-                    I wear hats with titles like "Pipeline Architect" and "ArtOps Engineer." I make
-                    the glue that helps studios manage complex asset production pipelines.
-                </p>
-                <p>
-                    More specifically, I specialize in helping folks outside the gaming industry
-                    integrate technologies like <strong>Unreal Engine</strong> and
-                    <strong>Blender</strong> into their media pipelines.
-                </p>
-                <p>
-                    That means I frequently work with architects, video production companies,
-                    internal corporate media teams, and indie livestreaming productions.
-                </p>
-                <h2>Projects I'm Excited About</h2>
-                <p>
-                    As a part of bootstrapping my studio
-                    <strong>The Wise<HL>Lich</HL> Syndicate</strong>, I'm also spinning up
-                    a knowledgebase and learning platform (tentatively) called the <strong>The Wise<HL>Lich</HL> Archive</strong
-                    >.
-                </p>
-                <p>
-                    My intent in creating the <strong>W<HL>L</HL>A</strong>
-                     is to collect all of the common resources I point my clients to into a platform
-                    that makes technical information a lot easier to digest.
-                </p>
-                <p>
-                    And to have some fun with Astro, because I'm physically incapable of staying in
-                    my lane.
-                </p>
-                <h2>How to Work With Me</h2>
-                <p>
-                    I'm still in the process of establishing a proper outsourcing and consulting
-                    studio,
-                    <strong>The Wise<HL>Lich</HL> Syndicate</strong>, for working with
-                    teams outside of my personal network.
-                </p>
-                <p>
-                    In the meantime, if we have friends in common, please feel free to reach out
-                    through the scheduling link below.
-                </p>
+                <Content/>
                 <div class="ml-auto w-fit">
                     <CalendarModal client:visible />
                 </div>
