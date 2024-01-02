@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
+import { FormatTag } from "@u/Tags";
 import SidebarCard from "@c/cards/SidebarCard.astro";
 
 interface Props {
@@ -8,7 +9,6 @@ interface Props {
 
 const { post } = Astro.props
 
-console.log(post)
 ---
 <SidebarCard>
     <div class="
@@ -37,7 +37,7 @@ console.log(post)
     {
         post.data.tags.map((tag) => (
             <div class="px-2 py-1 bg-space-500 m-1 text-lg capitalize">
-                {tag}
+                {FormatTag(tag)}
             </div>
         ))
     }

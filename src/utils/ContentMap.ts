@@ -8,5 +8,6 @@ export const blogTitles = blogEntries
     .map( (entry) => ({
         slug: entry.slug,
         title: entry.data.title,
+        // Do this better
         decorator: entry.data.status === "draft" ? "[DRAFT] " : ""
     }))
