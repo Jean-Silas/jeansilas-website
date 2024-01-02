@@ -1,0 +1,22 @@
+---
+import { blogTitles } from "@u/ContentMap"
+import SidebarCard from "@c/cards/SidebarCard.astro";
+
+---
+<SidebarCard>
+    <h2 class="border-b border-space-800 pb-1 text-lg">
+        Recent Posts
+        </h2>
+    <!-- TODO: Componentify -->
+        <ul class="list-disc list-outside pl-4 mt-2">
+        {
+            blogTitles.map((post) => (
+            <li class="mb-2">
+                <a href=`/blog/${post.slug}`  class:list={["hover:text-space-400"]}>
+                    {post.decorator} {post.title}
+                </a>
+            </li>
+            ))
+        }
+        </ul>
+</SidebarCard>

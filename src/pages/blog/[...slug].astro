@@ -9,12 +9,12 @@ import BigHeader from '@c/blocks/BigHeader.astro';
 import Article from '@md/Article.astro';
 import BlogData from '@md/BlogData.astro';
 import Frontmatter from '@md/Frontmatter.astro'
+import RecentPosts from '@md/RecentPosts.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
     const blogEntries = await getCollection('blog');
     return blogEntries
-        // TODO: Parameterize properly with environment variables.
         .filter( (entry) => (entry.data.status === "published" || import.meta.env.DEV))
         .map( (entry) => ({
             params: { slug: entry.slug },
@@ -30,9 +30,10 @@ const title = `JSM | ${entry.data.title}`;
 <Wide title={title}>
     <BlogData slot="head" {...entry.data}/>
     <WideLeftLogo>
-        <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center ">
+        <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center">
             <BigHeader class="w-fit ml-auto lg:min-w-[24rem]"/>
             <Frontmatter post={entry}/>
+            <RecentPosts/>
         </div>
         <div class="
             max-w-5xl
