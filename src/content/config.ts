@@ -20,6 +20,7 @@ const blogCollection = defineCollection({
         ...contentBase,
         image: z.string().optional(),
         description: z.string().optional(),
+        subtitle: z.string().optional()
     }),
 });
 
