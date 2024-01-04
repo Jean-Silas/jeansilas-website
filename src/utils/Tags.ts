@@ -1,18 +1,15 @@
-
 /**
- * Parses special characters in post tags to resolve the semantic heirarchy. 
- * 
+ * Parses special characters in post tags to resolve the semantic heirarchy.
+ *
  * @remarks
  * - `$` Marks the root tag category
  * - `:` Hierarchical divider
  * - `|` Disjunction
  */
 export function ParseTag(tag: string) {
-    const segments = tag.split(":")
-        .map(seg => {
-            console.log(seg)
-        }
-        );
+    const segments = tag.split(':').map((seg) => {
+        console.log(seg);
+    });
 }
 
 /**
@@ -20,5 +17,5 @@ export function ParseTag(tag: string) {
  * @param tag string
  */
 export function FormatTag(tag: string) {
-    return tag.split(":").pop()?.split("|").pop()
+    return tag.split(':').pop()?.split('|').pop();
 }

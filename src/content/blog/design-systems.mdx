@@ -7,8 +7,7 @@ tags:
     - project-planning
 ---
 
-
-import Callout from "@c/md/Callout.astro"
+import Callout from '@c/md/Callout.astro';
 
 # Design Systems for Designing (Game) Systems
 
@@ -16,16 +15,17 @@ import Callout from "@c/md/Callout.astro"
     What we're going to explore here is a form of *meta-design,* where we identify "atomic" patterns and turn those patterns into tools we can design actual game mechanics with.
 
     We're making sets of dice, which can be handed off to designers to make systems and sub-systems in games.
+
 </Callout>
 
 In UI design, a Design System is a combination of standards, style guides, components, and patterns that are used as a sort of design toolkit.
 They enforce a baseline of both visual and functional consistency, encouraging a composition-driven approach.
 
-In other words, it's a form of kitbashing for both *how things look* and *how things work.*
+In other words, it's a form of kitbashing for both _how things look_ and _how things work._
 
 And that's a concept we can steal from.
 
-## Atomic Mechanics 
+## Atomic Mechanics
 
 The atomic elements of UI design are fairly easy to identify: color, spacing, shape, depth, and so on.
 But what are the atomic elements of game design?
@@ -37,31 +37,32 @@ In pen and paper games, atomic elements can be fairly tangible and direct, since
 
 A common pattern we see in pen and paper games involves rolling dice, adding up the numbers, adding some other numbers, and then comparing the result to yet another number to determine success or failure.
 
-This pattern is what I'd call a *family* of mechanics, and within which is the *atomic* family of **evenly weighted dice containing continuous ranges of integers bound by the number of sides on the dice.**
+This pattern is what I'd call a _family_ of mechanics, and within which is the _atomic_ family of **evenly weighted dice containing continuous ranges of integers bound by the number of sides on the dice.**
 
 This is the level of granularity we're talking about.
 Not just dice, but dice containing specific kinds of number that fall into specific ranges and are bound by specific constraints.
-This might feel overly explicit, but there are lots of dice that *don't* adhere to this definition.
+This might feel overly explicit, but there are lots of dice that _don't_ adhere to this definition.
 
 And that's just for dice as abstract value-generators; the ways dice are used — adding/subtracting rolls with other values, rolling over/under thresholds, critical success/failure, exploding dice, etc. — are compositions of dice with other atomics.
 
 Dice aren't our only options for value-generators, though.
 You can get reasonably equivalent statistical distributions from dice, cards, and even dominoes if you put your shoulder into it — where they differ is in their affordances:
 
-- The faces on a die are a non-exhaustible set of values.
-- A deck of cards contains an exhaustible a sequence of values.
-- A bag of dominoes contains an exhaustible set of value pairs.
+-   The faces on a die are a non-exhaustible set of values.
+-   A deck of cards contains an exhaustible a sequence of values.
+-   A bag of dominoes contains an exhaustible set of value pairs.
 
 You can, of course, build rules on top of these generators to limit or augment their affordances, but these baseline affordances are valuable tools:
 
-- If a generator is exhaustible, it creates opportunities for replacement, stuffing, and regeneration.
-- If a generator is ordered, it creates opportunities for peeking, plucking, discarding, and shuffling.
-- If a generator produces value pairs, it creates opportunities for picking and summing.
+-   If a generator is exhaustible, it creates opportunities for replacement, stuffing, and regeneration.
+-   If a generator is ordered, it creates opportunities for peeking, plucking, discarding, and shuffling.
+-   If a generator produces value pairs, it creates opportunities for picking and summing.
 
-And we're not even at the level of designing actual game mechanics; we're just talking about atomic elements you can design mechanics *with.*
+And we're not even at the level of designing actual game mechanics; we're just talking about atomic elements you can design mechanics _with._
 The value of creating Design Systems, of this pre-pre-production step, comes from inspecting this atomicity.
 
 {/* TODO: Make a Component for this? */}
+
 > As an exercise, try hammering out how many atomics elements there could be in a pen and paper mechanic where dice are used as a consumable resource.
 
 ### Digital Atomics
@@ -70,17 +71,16 @@ Compared to pen and paper games, atomics elements in digital games can be fairly
 
 Dice abstract to Generative Value Sources.
 
-
 ## Design Systems are Games
 
 If you want to make a damage-type system for a turn based tactics game or a behavior model for AI in a first person shooter or a set of puzzles in an adventure game, you'll end up making both those systems and, inevitably, some sort of unintentional Design System where you define goals and constraints and rubrics that make it easier to iterate on those systems.
 
-Turning those unintentional Design Systems that you *know* you'll make into intentional Design Systems is similarly inevitable.
+Turning those unintentional Design Systems that you _know_ you'll make into intentional Design Systems is similarly inevitable.
 If you want to bring other people into the design process, you need to give them tools.
 And those tools tend to come together in a way that feels like a form of play.
 
 If you've ever made an environment kit, you probably know what I'm on about.
-Figuring out your grids, figuring out your sub-kit transitions, your parameterization, your points of flexibility — you have to *play* with your kit in order to dial it in.
+Figuring out your grids, figuring out your sub-kit transitions, your parameterization, your points of flexibility — you have to _play_ with your kit in order to dial it in.
 You have to make puzzles to solve.
 
 Extracting that puzzle-making process out into its own game (a concrete, intentional, Design System) makes it easier to identify your rules, challenge them, and improve them.
@@ -95,4 +95,4 @@ Rules are tools you have fun with.
 ## The Bones of a Good Design System
 
 The bones of a good Design System are similar to the bones of a good game.
-Rules should be tools, they should create points of engagement, they should be things you *use;* good rules inform the process of play.
+Rules should be tools, they should create points of engagement, they should be things you _use;_ good rules inform the process of play.

@@ -15,38 +15,47 @@ const { Content } = await entry.render();
 ---
 
 <Wide title="Unreal Engine Mentorships | Feature Design, ArtOps, Project Management ">
-    <meta name="description" content="Mentoring from The ArtOps Guy" slot="head"/>
+    <meta name="description" content="Mentoring from The ArtOps Guy" slot="head" />
     <WideLeftLogo>
-        <MentorshipSideHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
-        <div class="
-                    max-w-8xl
+        <MentorshipSideHeader class="ml-auto w-fit lg:sticky lg:min-w-[24rem]" />
+        <div
+            class="max-w-8xl
                     grid
                     grid-cols-1
-                    gap-4
-                    xl:grid-cols-12
                     justify-stretch
                     justify-items-center
+                    gap-4
                     p-2
-            ">
+                    xl:grid-cols-12"
+        >
             <div class="col-span-12 w-full">
-                <h2 class="
-                    text-5xl-fluid
+                <h2
+                    class="text-center
                     font-black
-                    text-center
-                    ">
+                    text-5xl-fluid"
+                >
                     Popular Mentorship Packages
                 </h2>
-                <div class="text-center mb-3 lg:max-w-[50%] mx-auto">
-                    All of my mentorships are highly customized; these are just the things people contact me about the most.
+                <div class="mx-auto mb-3 text-center lg:max-w-[50%]">
+                    All of my mentorships are highly customized; these are just the things people
+                    contact me about the most.
                 </div>
-                <hr class="w-1/2 mx-auto border-bone-400 border-b my-1 ">
+                <hr class="mx-auto my-1 w-1/2 border-b border-bone-400" />
             </div>
-            <MentoshipAutoCard slug="mentoring/interaction-design", class="col-span-12 2xl:col-start-1 2xl:col-span-6 max-w-4xl"/>
-            <MentoshipAutoCard slug="mentoring/project-management", class="col-span-12 2xl:col-start-7 2xl:col-span-6 max-w-4xl"/>
-            <MentoshipAutoCard slug="mentoring/artops",             class="col-span-12  max-w-4xl"/>
-            <hr class="w-1/2 mx-auto border-bone-400 border-b my-6 col-span-12">
+            <MentoshipAutoCard
+                slug="mentoring/interaction-design"
+                ,
+                class="col-span-12 max-w-4xl 2xl:col-span-6 2xl:col-start-1"
+            />
+            <MentoshipAutoCard
+                slug="mentoring/project-management"
+                ,
+                class="col-span-12 max-w-4xl 2xl:col-span-6 2xl:col-start-7"
+            />
+            <MentoshipAutoCard slug="mentoring/artops" , class="col-span-12 max-w-4xl" />
+            <hr class="col-span-12 mx-auto my-6 w-1/2 border-b border-bone-400" />
             <Article>
-                <Content/>
+                <Content />
             </Article>
         </div>
     </WideLeftLogo>

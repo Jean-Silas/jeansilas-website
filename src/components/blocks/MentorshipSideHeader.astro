@@ -3,15 +3,16 @@ interface Props {
     class: string;
 }
 
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 
-const {class: _class = ""} = Astro.props;
+const { class: _class = '' } = Astro.props;
 ---
 
-<aside class={twMerge("top-0  flex  flex-wrap items-center justify-between gap-4 px-3", _class)}>
+<aside class={twMerge('top-0  flex  flex-wrap items-center justify-between gap-4 px-3', _class)}>
     <div class="w-full">
-        <div class=" mt-4 w-full">
-            <h1 class="whitespace-nowrap
+        <div class="mt-4 w-full">
+            <h1
+                class="whitespace-nowrap
                         
                         border-r-[24px]
                         border-bone-400
@@ -28,7 +29,6 @@ const {class: _class = ""} = Astro.props;
                 <li>Project-focused</li>
                 <li>Yes, there will be homework</li>
             </ul>
-
         </div>
     </div>
 </aside>

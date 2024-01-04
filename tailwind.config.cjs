@@ -10,7 +10,7 @@ module.exports = {
         fontFamily: {
             sans: ["'Inter', sans-serif"],
             title: ["'Montserrat Variable', sans-serif"],
-            mono: ["Martian Mono Variable", 'consolas', 'serif'],
+            mono: ['Martian Mono Variable', 'consolas', 'serif'],
         },
         extend: {
             aspectRatio: {

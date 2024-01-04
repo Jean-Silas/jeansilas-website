@@ -1,6 +1,6 @@
 ---
 import { getCollection, getEntry, getEntries } from 'astro:content';
-import { blogTitles } from "@u/ContentMap"
+import { blogTitles } from '@u/ContentMap';
 
 import Wide from '@l/Wide.astro';
 import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
@@ -11,26 +11,27 @@ import RecentPosts from '@md/RecentPosts.astro';
 const entry = await getEntry('blog', 'hello-world');
 const { Content } = await entry.render();
 ---
+
 <Wide title="Jean-Silas Moor | Blog">
-    <meta name="description" content="The ArtOps Guy's Blog" slot="head"/>
-    <WideLeftLogo > 
-        <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center ">
-            <BigHeader class="w-fit ml-auto lg:min-w-[24rem]"/>
-            <RecentPosts/>
+    <meta name="description" content="The ArtOps Guy's Blog" slot="head" />
+    <WideLeftLogo>
+        <div class="top-0 grid grid-cols-1 justify-items-center lg:sticky">
+            <BigHeader class="ml-auto w-fit lg:min-w-[24rem]" />
+            <RecentPosts />
         </div>
-        <div class="
+        <div
+            class="grid
             max-w-5xl
-            grid
             grid-cols-1
-            gap-4
-            xl:grid-cols-2
             justify-stretch
             justify-items-center
+            gap-4
             p-2
             unfolded:p-4
-        ">
+            xl:grid-cols-2"
+        >
             <Article>
-                <Content/>
+                <Content />
             </Article>
         </div>
     </WideLeftLogo>

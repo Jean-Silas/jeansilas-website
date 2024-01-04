@@ -8,15 +8,15 @@ import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
 import BigHeader from '@c/blocks/BigHeader.astro';
 import Article from '@md/Article.astro';
 import BlogData from '@md/BlogData.astro';
-import Frontmatter from '@md/Frontmatter.astro'
+import Frontmatter from '@md/Frontmatter.astro';
 import RecentPosts from '@md/RecentPosts.astro';
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
     const blogEntries = await getCollection('blog');
     return blogEntries
-        .filter( (entry) => (entry.data.status === "published" || import.meta.env.DEV))
-        .map( (entry) => ({
+        .filter((entry) => entry.data.status === 'published' || import.meta.env.DEV)
+        .map((entry) => ({
             params: { slug: entry.slug },
             props: { entry },
         }));
@@ -27,27 +27,28 @@ const { Content } = await entry.render();
 
 const title = `JSM | ${entry.data.title}`;
 ---
+
 <Wide title={title}>
-    <BlogData slot="head" {...entry.data}/>
+    <BlogData slot="head" {...entry.data} />
     <WideLeftLogo>
-        <div class="lg:sticky top-0 grid grid-cols-1 justify-items-center">
-            <BigHeader class="w-fit ml-auto lg:min-w-[24rem]"/>
-            <Frontmatter post={entry}/>
-            <RecentPosts/>
+        <div class="top-0 grid grid-cols-1 justify-items-center lg:sticky">
+            <BigHeader class="ml-auto w-fit lg:min-w-[24rem]" />
+            <Frontmatter post={entry} />
+            <RecentPosts />
         </div>
-        <div class="
+        <div
+            class="grid
             max-w-5xl
-            grid
             grid-cols-1
-            gap-4
-            xl:grid-cols-2
             justify-stretch
             justify-items-center
+            gap-4
             p-2
             unfolded:p-4
-        ">
+            xl:grid-cols-2"
+        >
             <Article>
-                <Content/>
+                <Content />
             </Article>
         </div>
     </WideLeftLogo>

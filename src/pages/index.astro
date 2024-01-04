@@ -10,49 +10,47 @@ import CalendarModal from '@c/cards/CalendarModal';
 import Article from '@c/md/Article.astro';
 
 const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name" : "Jean-Silas Moor",
-    "alternateName": ["JS Moor"],
-    "url": "https://jeansilas.com",
-    "hasPart": [
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Jean-Silas Moor',
+    alternateName: ['JS Moor'],
+    url: 'https://jeansilas.com',
+    hasPart: [
         {
-            "@type": "ProfilePage",
-            "mainEntity": {
-                "@type": "Person",
-                "name": "Jean-Silas Moor",
-                "alternateName": "jeansilas",
-                "description": "The Art-Ops Guy",
-                "sameAs": [
-                    "https://mastodon.gamedev.place/@jeansilas"
-                ]
-            }
-        }
-    ]
-}
+            '@type': 'ProfilePage',
+            mainEntity: {
+                '@type': 'Person',
+                name: 'Jean-Silas Moor',
+                alternateName: 'jeansilas',
+                description: 'The Art-Ops Guy',
+                sameAs: ['https://mastodon.gamedev.place/@jeansilas'],
+            },
+        },
+    ],
+};
 
 const entry = await getEntry('blocks', 'homepage');
 const { Content } = await entry.render();
 ---
 
 <Wide title="Jean-Silas Moor: The ArtOps Guy">
-    <meta name="description" content="The ArtOps Guy" slot="head"/>
+    <meta name="description" content="The ArtOps Guy" slot="head" />
     <script type="application/ld+json" slot="head" set:html={JSON.stringify(schema)} />
     <WideLeftLogo>
-        <BigHeader class="lg:sticky w-fit ml-auto lg:min-w-[24rem]"/>
-        <div class="
+        <BigHeader class="ml-auto w-fit lg:sticky lg:min-w-[24rem]" />
+        <div
+            class="grid
             max-w-5xl
-            grid
             grid-cols-1
-            gap-4
-            xl:grid-cols-2
             justify-stretch
             justify-items-center
+            gap-4
             p-2
             unfolded:p-4
-            ">
+            xl:grid-cols-2"
+        >
             <Article>
-                <Content/>
+                <Content />
                 <div class="ml-auto w-fit">
                     <CalendarModal client:visible />
                 </div>

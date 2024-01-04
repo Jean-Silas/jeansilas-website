@@ -5,17 +5,19 @@ interface Props {
     class?: string;
 }
 
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 
 import FancyHeader from '@c/elements/FancyHeader.astro';
 
-const { title, price, class: _class = "" } = Astro.props;
+const { title, price, class: _class = '' } = Astro.props;
 
 const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
 ---
 
-<div class={twMerge("w-full  h-full aspect-[21/9]", outer_class)}>
-    <div class={twMerge(`
+<div class={twMerge('w-full  h-full aspect-[21/9]', outer_class)}>
+    <div
+        class={twMerge(
+            `
         bg-space-950
         @container
         grid
@@ -30,42 +32,51 @@ const [outer_class, inner_class, picture_class, text_class] = _class.split('|');
         outline
         outline-1
         outline-space-800`,
-        inner_class)}
-    > 
-        <FancyHeader class="text-fc-[0.5rem_9.5cqw_3rem] mb-3 mt-0 ml-auto border-none row-start-1 col-start-1 col-span-2">
+            inner_class,
+        )}
+    >
+        <FancyHeader
+            class="col-span-2 col-start-1 row-start-1 mb-3 ml-auto mt-0 border-none text-fc-[0.5rem_9.5cqw_3rem]"
+        >
             {title}
         </FancyHeader>
-        <div class="
-                relative
+        <div
+            class="relative
                 col-span-2
                 row-span-1
                 row-start-2
-                @sm:col-start-1
-                @sm:col-span-1
                 grid
-            ">
-            <div 
-                class="absolute   aspect-square   w-full max-w-[15rem] bg-white  self-center justify-self-center"
-                style="clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); "> </div>
+                @sm:col-span-1
+                @sm:col-start-1"
+        >
+            <div
+                class="absolute aspect-square w-full max-w-[15rem] self-center justify-self-center bg-white"
+                style="clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%); "
+            >
+            </div>
             <picture
-                class={twMerge("block aspect-square  w-full max-w-[15rem] bg-black justify-self-center self-center", picture_class)}
-                style="clip-path: polygon(50% 2%, 98% 50%, 50% 98%, 2% 50%); ">
+                class={twMerge(
+                    'block aspect-square  w-full max-w-[15rem] bg-black justify-self-center self-center',
+                    picture_class,
+                )}
+                style="clip-path: polygon(50% 2%, 98% 50%, 50% 98%, 2% 50%); "
+            >
             </picture>
         </div>
 
-        <div class="
-            grid
-            grid-rows-[3fr_auto]
-            h-full
-            @sm:col-start-2
-            @sm:col-span-1
+        <div
+            class="col-span-2
             col-start-1
-            col-span-2
-        ">
+            grid
+            h-full
+            grid-rows-[3fr_auto]
+            @sm:col-span-1
+            @sm:col-start-2"
+        >
             <section class=`${text_class}`>
-                <slot/>
+                <slot />
             </section>
-            <div class="ml-auto w-fit text-xl p-2 ">
+            <div class="ml-auto w-fit p-2 text-xl">
                 {price}
             </div>
         </div>

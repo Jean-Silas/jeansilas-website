@@ -3,12 +3,14 @@ interface Props {
     class?: string;
 }
 
-import { twMerge } from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge';
 
-const {class: _class = ""} = Astro.props;
+const { class: _class = '' } = Astro.props;
 ---
 
-<h2 class={twMerge(`
+<h2
+    class={twMerge(
+        `
     whitespace-nowrap
     mx-0
     mt-4 
@@ -24,8 +26,8 @@ const {class: _class = ""} = Astro.props;
     after:border-b-2 
     after:border-bone-400 
     after:block`,
-    _class)}
+        _class,
+    )}
 >
-    <slot/>
+    <slot />
 </h2>
-

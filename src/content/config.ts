@@ -20,7 +20,7 @@ const blogCollection = defineCollection({
         ...contentBase,
         image: z.string().optional(),
         description: z.string().optional(),
-        subtitle: z.string().optional()
+        subtitle: z.string().optional(),
     }),
 });
 
@@ -46,5 +46,5 @@ const serviceCollection = defineCollection({
 export const collections = {
     blog: blogCollection,
     blocks: blockCollection,
-    services: serviceCollection
-}
+    services: serviceCollection,
+};

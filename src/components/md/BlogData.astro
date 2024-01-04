@@ -2,24 +2,22 @@
 import type { CollectionEntry } from 'astro:content';
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title,  tags, description, image } = Astro.props;
+const { title, tags, description, image } = Astro.props;
 
 const schema = {
-  "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": title,
-  "description": description,
-  "keywords": tags,
-  "image": [
-    image
-  ],
-  "author": {
-    "@type": "Person",
-    "name": "Jean-Silas Moor",
-    "url": "https://jeansilas.com"
-  },
-
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: description,
+    keywords: tags,
+    image: [image],
+    author: {
+        '@type': 'Person',
+        name: 'Jean-Silas Moor',
+        url: 'https://jeansilas.com',
+    },
 };
 ---
+
 <meta name="description" content={description} />
 <script type="application/ld+json" set:html={JSON.stringify(schema)} />

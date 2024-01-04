@@ -1,45 +1,45 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import { FormatTag } from "@u/Tags";
-import SidebarCard from "@c/cards/SidebarCard.astro";
+import type { CollectionEntry } from 'astro:content';
+import { FormatTag } from '@u/Tags';
+import SidebarCard from '@c/cards/SidebarCard.astro';
 
 interface Props {
-    post: CollectionEntry<'blog'>
+    post: CollectionEntry<'blog'>;
 }
 
-const { post } = Astro.props
-
+const { post } = Astro.props;
 ---
-<SidebarCard>
-    <div class="
-    text-2xl-fluid
-    font-bold
 
+<SidebarCard>
+    <div
+        class="mb-4
+    mt-0
     border-r-[16px]
     border-bone-400
     pr-5
-    mt-0
-    mb-4
-
-    after:border-b-2
-    after:border-bone-400
+    font-bold
+    text-2xl-fluid
     after:block
     after:h-2
-    ">
-    {post.data.title}
-</div>
-{
-    post.data.subtitle ?
-    <div class="border-b border-space-800 pb-1 mb-2 text-xl text-space-300">{post.data.subtitle}</div>
-    : <div></div>
-}
-<div class="flex flex-wrap">
+    after:border-b-2
+    after:border-bone-400"
+    >
+        {post.data.title}
+    </div>
     {
-        post.data.tags.map((tag) => (
-            <div class="px-2 py-1 bg-space-500 m-1 text-lg capitalize">
-                {FormatTag(tag)}
+        post.data.subtitle ? (
+            <div class="mb-2 border-b border-space-800 pb-1 text-xl text-space-300">
+                {post.data.subtitle}
             </div>
-        ))
+        ) : (
+            <div />
+        )
     }
-</div>
+    <div class="flex flex-wrap">
+        {
+            post.data.tags.map((tag) => (
+                <div class="m-1 bg-space-500 px-2 py-1 text-lg capitalize">{FormatTag(tag)}</div>
+            ))
+        }
+    </div>
 </SidebarCard>

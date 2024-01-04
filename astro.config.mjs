@@ -12,11 +12,9 @@ export default defineConfig({
     integrations: [
         tailwind(),
         mdx({
-            remarkPlugins: [
-                remarkHint
-            ]
+            remarkPlugins: [remarkHint],
         }),
-        react()
+        react(),
     ],
     output: 'server',
     adapter: vercel(),

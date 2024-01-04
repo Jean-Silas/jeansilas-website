@@ -1,3 +1,1 @@
-export default function WiggleCard() {
-    
-}
+export default function WiggleCard() {}
