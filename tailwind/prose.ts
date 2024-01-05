@@ -20,7 +20,7 @@ const twu = (u: number) => `${round(u * 0.25)}rem`
 
 // TODO: Fluid text.
 
-const articleAlt = {
+const articleCSS = {
     fontSize: rem(18),
     lineHeight: round(28 / 16),
     h1: {
@@ -156,7 +156,6 @@ export default plugin(
                     },
                     article: {
                         css: {
-                            // Colors
                             '--tw-prose-body': theme('colors.space[100]'),
                             '--tw-prose-headings': 'white',
                             '--tw-prose-lead': theme('colors.space[200]'),
@@ -173,27 +172,7 @@ export default plugin(
                             '--tw-prose-pre-bg': theme('colors.space[900]'),
                             '--tw-prose-th-borders': 'white',
                             '--tw-prose-td-borders': 'white',
-                        },
-                    },
-                    articlealt: {
-                        css: {
-                            '--tw-prose-body': theme('colors.space[100]'),
-                            '--tw-prose-headings': 'white',
-                            '--tw-prose-lead': theme('colors.space[200]'),
-                            '--tw-prose-links': theme('colors.space[50]'),
-                            '--tw-prose-bold': theme('colors.space[50]'),
-                            '--tw-prose-counters': theme('colors.space[300]'),
-                            '--tw-prose-bullets': theme('colors.space[300]'),
-                            '--tw-prose-hr': theme('colors.space[200]'),
-                            '--tw-prose-quotes': theme('colors.space[200]'),
-                            '--tw-prose-quote-borders': theme('colors.space[500]'),
-                            '--tw-prose-captions': theme('colors.space[200]'),
-                            '--tw-prose-code': theme('colors.space[100]'),
-                            '--tw-prose-pre-code': theme('colors.space[200]'),
-                            '--tw-prose-pre-bg': theme('colors.space[900]'),
-                            '--tw-prose-th-borders': 'white',
-                            '--tw-prose-td-borders': 'white',
-                            ...articleAlt
+                            ...articleCSS
                         }
                     }
                 }),
