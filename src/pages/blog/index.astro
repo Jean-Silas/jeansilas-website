@@ -6,6 +6,7 @@ import Wide from '@l/Wide.astro';
 import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
 import BigHeader from '@b/BigHeader.astro';
 import Article from '@md/Article.astro';
+import ArticleAlt from '@md/ArticleAlt.astro';
 import RecentPosts from '@md/RecentPosts.astro';
 
 const entry = await getEntry('blog', 'hello-world');
@@ -30,9 +31,9 @@ const { Content } = await entry.render();
             unfolded:p-4
             xl:grid-cols-2"
         >
-            <Article>
+            <ArticleAlt>
                 <Content />
-            </Article>
+            </ArticleAlt>
         </div>
     </WideLeftLogo>
 </Wide>
