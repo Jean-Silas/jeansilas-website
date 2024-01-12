@@ -1,0 +1,286 @@
+---
+title: 'Atomic Design: Random Number Generators as "Fucky Dice"'
+subtitle: Random numbers can be trickier than they look
+status: draft
+tags:
+    - $focus:design
+    - $topic:math
+    - $topic:stat-systems
+---
+
+import Callout from '@c/md/Callout.astro';
+import DiceChart from '@c/md/charts/DiceChart.astro'
+import TabbedChartGroup from '@c/md/charts/TabbedChartGroup.astro'
+import TabChartWrapper from '@c/md/charts/TabChartWrapper.astro'
+
+# Atomic Design: Random Number Generators as "Fucky Dice"
+
+<Callout kind="summary">
+    Modeling random number generators as "fucky dice" can be a great design strategy.
+    
+    Each set of dice comes with both a statistical distribution and a level of numerical granularity that will inform later design decisions you make.
+    Your dice will influence your modifiers, your modifiers will influence your value scaling, your value scaling will influence your loot design, and so on.
+</Callout>
+
+I'm going to make a pitch that will sound either incredibly weird or totally self-evident:
+
+1. You should treat random number generation as a concrete, intentional, part of your design system.
+2. Modeling your **Generators** as "fucky dice" can be an intuitive way to enforce certain statistical distributions in an error-resistant way.
+3. Taking the time to build visualizers for your "fucky dice" and how they interact with your other atomic design elements can help you catch flaws in your value scaling.
+
+Now I'll be the first to say that my approach to game mechanics has heavy tabletop influences.
+I will always advocate for hand-calculable, integer-based, systems with relatively simple rules.
+It's how I'm built.
+
+This notion of "fucky dice" isn't *just* me thumping on about tabletop things, though.
+It's about setting up design tools that help you make better decisions throughout the entire design process.
+
+## What do Generators *do?*
+
+A Generator, on its own, isn't a complete game mechanic.
+All it does is produce values, that belong to a particular set, with some knowable statistical distribution.
+
+This means that even a language-default `rand()` function counts as a Generator if you're consciously using it as part of your design process.
+An even distribution of floats in the `0..1` range can quite useful when you use it intentionally.
+
+The thing is, you rarely use `rand()` on its own in game mechanics.
+You rescale the results to a different range, maybe add a distribution bias, and _then_ use it as a Generator.
+Sometimes you do this as a forward-looking design decision, but a lot of the time you do it reactively, driven by feeling or feedback.
+
+And that's crux of generators:
+
+<Callout kind="info">
+    Generators produce values, that belong to particular sets, with knowable statistical distributions, **and reinforce subjective impressions about the mechanics they're used in.**
+</Callout>
+
+Generators produce values, that belong to particular sets, with knowable statistical distributions, **and reinforce subjective impressions about the mechanics they're used in.**
+
+## How Dice Work
+
+The wonderful thing about normal dice is that they're intuitive.
+If you roll a normal four sided die it'll produce a value in the `1..=4` range with an even distribution and a mean of two and a half.
+If you roll two four sided dice and add them together, they'll give you something in `2..=8` with a symmetrically curved distribution, where both the mean and most common result is five.
+If you roll more, the curve becomes more pronounced in a predictable way.
+
+Here are some charts, just for the sake of thoroughness:
+
+<TabbedChartGroup tabs={["1d4", "2d4", "3d4"]} group_name="d4s" label="Standard d4's">
+    <TabChartWrapper>
+        <DiceChart dice="1d4" complex={false} norm={50}>
+            The standard `1d4` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice="2d4" complex={false} norm={50}>
+            The standard `2d4` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice="3d4" complex={false} norm={50}>
+            The standard `3d4` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+</TabbedChartGroup>
+
+But we're not here for normal dice, we're here for _fucky_ dice.
+We're here to use the approachability of low-value integer ranges as a stepping stone into conversations about the utility of certain statistical distributions in game design.
+
+So lets start off with something simple:
+
+### What if dice had zeros and repeated numbers?
+
+This is the distribution you get if you roll a twenty-one-sided die that has one zero, two ones, three twos, four threes, five fours, and six fives:
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="lin_expansion" label="Linearly Expanding Value Repetition">
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap((val, index) => (Array(index + 1).fill(val))),
+            ]}
+            complex={true}
+            norm={50}
+            >
+            The `1d[(0..=5)*($i+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index + 1).fill(val))),
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[(0..=5)*($i+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index + 1).fill(val))),
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[(0..=5)*($i+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+</TabbedChartGroup>
+
+Now here's a die with one zero, two ones, five twos, ten threes, seventeen fours, and twenty-six fives:
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="exp_expansion" label="Exponentially Expanding Value Repetition">
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+                
+            ]}
+            complex={true}
+            norm={50}>
+            The `1d[(0..=5)*(($i^2)+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[(0..=5)*(($i^2)+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(index * index + 1).fill(val))),
+            ]}
+            complex={true}
+            norm={50}>
+            The `3d[(0..=5)*(($i^2)+1)]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+</TabbedChartGroup>
+
+Isn't that _fun?_
+
+They're simple offset exponential distributions with discrete values.
+The offset peaks for the summed rolls scale exactly as you'd expect them to.
+There's nothing fancy here, and you probably already have the libraries needed to implement it.
+
+And in term of practical benefits, there are _tons._
+
+Now here's what you get with a powers-of-two repetition:
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="pow2" label="Powers-of-Two Dice">
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val))),
+            ]}
+            complex={true}
+            norm={60}>
+            The `1d[(0..=5)*(2^$i)]` distribution
+        </DiceChart >
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val)))
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[(0..=5)*(2^$i)]` distribution
+        </DiceChart >
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val))),
+                [0,1,2,3,4,5].flatMap( (val, index) => (Array(2**index).fill(val)))
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[(0..=5)*(2^$i)]` distribution
+        </DiceChart >
+    </TabChartWrapper>
+</TabbedChartGroup>
+
+### What if Dice Had Negative Numbers?
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="lin_neg" label="Continuous-Range Negative Values">
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,-1,0,1,2],
+            ]}
+            complex={true}
+            norm={50}>
+            The `1d[-2,-1,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,-1,0,1,2],
+                [-2,-1,0,1,2],
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[-2,-1,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,-1,0,1,2],
+                [-2,-1,0,1,2],
+                [-2,-1,0,1,2],
+            ]}
+            complex={true}
+            norm={50}>
+            The `3d[-2,-1,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+</TabbedChartGroup>
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="nonlin_neg" label="Non-Continuous-Range Negative Values">
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,0,1,2],
+            ]}
+            complex={true}
+            norm={50}>
+            The `1d[-2,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,0,1,2],
+                [-2,0,1,2],
+            ]}
+            complex={true}
+            norm={50}>
+            The `2d[-2,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,0,1,2,],
+                [-2,0,1,2,],
+                [-2,0,1,2,],
+            ]}
+            complex={true}
+            norm={50}>
+            The `3d[-2,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+</TabbedChartGroup>

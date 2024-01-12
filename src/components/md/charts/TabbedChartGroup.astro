@@ -1,0 +1,83 @@
+---
+interface Props {
+    tabs: string[]
+    group_name: string,
+    label?: string,
+}
+
+
+
+const { tabs, group_name, label } = Astro.props
+---
+<!-- Yoinked from https://codepen.io/MPDoctor/pen/mpJdYe -->
+<div class=" border border-space-600 not-prose my-4">
+    <div class="text-center text-3xl my-2">{label}</div>
+    
+    <div class="tabbed">
+        {tabs.map((tab, index) => (
+            <input type="radio" id={`${group_name}-tab${index + 1}`} name={`${group_name}-tabs`} checked={index == 0}>
+        ))
+        }
+        
+        <ul class="tabs">
+            {tabs.map((tab, index) => (
+                <li class="tab">
+                    <label for={`${group_name}-tab${index + 1}`} class="bg-space-950 border-space-600">{tab}</label>
+                </li>
+            ))
+            }
+        </ul>
+        <slot/>
+    </div>
+</div>
+
+<style>
+.tabbed [type="radio"] {
+	/* hiding the inputs */
+	display: none;
+}
+
+.tabs {
+	display: flex;
+	align-items: stretch;
+	list-style: none;
+	padding: 0;
+
+}
+.tab > label {
+	display: block;
+	margin-bottom: -1px;
+	padding: 12px 15px;
+
+
+	font-size: 12px; 
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	cursor: pointer;	
+	transition: all 0.3s;
+}
+
+.tabbed :global(.tab-content) {
+	display: none;
+}
+
+.tabbed [type="radio"]:nth-of-type(1):checked ~ .tabs .tab:nth-of-type(1) label,
+.tabbed [type="radio"]:nth-of-type(2):checked ~ .tabs .tab:nth-of-type(2) label,
+.tabbed [type="radio"]:nth-of-type(3):checked ~ .tabs .tab:nth-of-type(3) label,
+.tabbed [type="radio"]:nth-of-type(4):checked ~ .tabs .tab:nth-of-type(4) label,
+.tabbed [type="radio"]:nth-of-type(5):checked ~ .tabs .tab:nth-of-type(5) label {
+    border-bottom-color: #fff;
+    filter: brightness(250%);
+}
+
+.tabbed [type="radio"]:nth-of-type(1):checked ~ :global(.tab-content:nth-of-type(1)),
+.tabbed [type="radio"]:nth-of-type(2):checked ~ :global(.tab-content:nth-of-type(2)),
+.tabbed [type="radio"]:nth-of-type(3):checked ~ :global(.tab-content:nth-of-type(3)),
+.tabbed [type="radio"]:nth-of-type(4):checked ~ :global(.tab-content:nth-of-type(4)) {
+    display: block;
+}
+
+
+
+</style>

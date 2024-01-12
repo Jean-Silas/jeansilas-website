@@ -15,9 +15,10 @@ const { kind } = Astro.props;
             ) : kind === 'warning' ? (
                 <strong>WARNING</strong>
             ) : kind === 'info' ? (
-                <strong>INFO</strong>
+                // Get a proper icon for this
+                <strong class="text-fc-[1.15rem_4.6vw_1.60rem]">INFO</strong>
             ) : (
-                <strong>Err</strong>
+                <strong class="text-fc-[1.15rem_4.6vw_1.60rem]">Err</strong>
             )
         }
     </p>
