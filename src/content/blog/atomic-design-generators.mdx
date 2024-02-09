@@ -168,15 +168,7 @@ Now here's a die with one zero, two ones, five twos, ten threes, seventeen fours
     </TabChartWrapper>
 </TabbedChartGroup>
 
-Isn't that _fun?_
-
-They're simple offset exponential distributions with discrete values.
-The offset peaks for the summed rolls scale exactly as you'd expect them to.
-There's nothing fancy here, and you probably already have the libraries needed to implement it.
-
-And in term of practical benefits, there are _tons._
-
-Now here's what you get with a powers-of-two repetition:
+And here's what you get with a powers-of-two expansion:
 
 <TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="pow2" label="Powers-of-Two Dice">
     <TabChartWrapper>
@@ -213,7 +205,19 @@ Now here's what you get with a powers-of-two repetition:
     </TabChartWrapper>
 </TabbedChartGroup>
 
+Isn't that _fun?_
+
+They're simple offset exponential distributions with discrete values.
+The offset peaks for the summed rolls scale exactly as you'd expect them to.
+There's nothing fancy here, and you probably already have the libraries needed to implement it.
+
+And in term of practical benefits, there are _tons._
+Biasing your dice, instead of relying on result modifiers and roll-target scaling schemes, lets you tune the subjective success-rate of game actions while keeping your numbers cleanly bounded.
+It lets you retain the chance of failure without having to include a fumble or critical failure mechanic, too.
+
 ### What if Dice Had Negative Numbers?
+
+Negative values can be an interesting way to add additional randomness, and provide on-the-die alternatives to the typical fumble and critical failure mechanics.
 
 <TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="lin_neg" label="Continuous-Range Negative Values">
     <TabChartWrapper>
@@ -250,7 +254,9 @@ Now here's what you get with a powers-of-two repetition:
     </TabChartWrapper>
 </TabbedChartGroup>
 
-<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice"]} group_name="nonlin_neg" label="Non-Continuous-Range Negative Values">
+And, when you use a biased non-continuous range, you get these quirky patterns:
+
+<TabbedChartGroup tabs={["One Die", "Two Dice", "Three Dice", "Four Dice"]} group_name="nonlin_neg" label="Non-Continuous-Range Negative Values">
     <TabChartWrapper>
         <DiceChart dice={[
                 [-2,0,1,2],
@@ -281,6 +287,19 @@ Now here's what you get with a powers-of-two repetition:
             complex={true}
             norm={50}>
             The `3d[-2,0,1,2]` distribution
+        </DiceChart>
+    </TabChartWrapper>
+
+    <TabChartWrapper>
+        <DiceChart dice={[
+                [-2,0,1,2,],
+                [-2,0,1,2,],
+                [-2,0,1,2,],
+                [-2,0,1,2,],
+            ]}
+            complex={true}
+            norm={50}>
+            The `4d[-2,0,1,2]` distribution
         </DiceChart>
     </TabChartWrapper>
 </TabbedChartGroup>
