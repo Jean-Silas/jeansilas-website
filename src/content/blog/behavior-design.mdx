@@ -1,5 +1,5 @@
 ---
-title: 'Behavior Design: AI, State Machines, Ability Systems, and More'
+title: 'Behavior Design: Improving GOAP with Continuous Refinement Functions'
 status: draft
 tags:
     - design
@@ -12,20 +12,30 @@ tags:
 
 import Callout from '@c/md/Callout.astro';
 
-# Behavior Design: AI, State Machines, Ability Systems, and More
+# Behavior Design: Improving GOAP with Continuous Refinement Functions
 
 <Callout kind="summary">
-    "Good" behavior design typically comes down to finessing *how* entities make decisions.
-    You should be giving your players more things to anticipate than just attack patterns and proximity triggers; **it should feels like entities are responding to their specific playstyle.**
+    Goal Oriented Action Planning gives us a robust way to tackle the practical side of behavior design, but it doesn't give us many tools for making behavior feel "organic."
+    In order to do that, you need to insert flaws into the behavior loop, ideally in a way that exposes points of control for your design team.
     
-    The hard part, of course, is doing that in a way that's consistent and scalable. Which is why we're going to explore the following premise:
+    And that's where Continuous Refinement Functions come in.
 
-    > All AI decision making should take place over multiple frames and involve observability, perception, and confidence factors that are, themselves, interpolated over time.
+    CRFs are coroutine-ish functions that return successively higher-quality results with each yield.
+    They're most easily used in perception systems (e.g. a Sound Perception function that returns a successively narrower conic section for determining the location of an audio source), but they really shine when you use them throughout the entire behavior model.
+    
+    Why?
 
+    Because CRFs are inherently responsive to pressure.
+    When you use them throughout your behavior system, your designers can tune playstyle-specific reactivity.
+    You can reward aggression, encourage stealth, make a robot feel inherently different than a human, all by parameterizing pressure responses.
+
+    So let's learn how to use them.
 </Callout>
 
 One of my favorite things to see in games are enemies that are aggressive _until you land a headshot._
 It's a form of reactivity that rewards skillful play and it can lead to some very interesting feedback loops.
+
+My preferred way to _implement_ that kind of reactivity is to insert Continuous Refinement Functions into all the places where behavior systems produce **intentionally non-optimal results.**
 
 But what's the best way to build that kind of behavior?
 
