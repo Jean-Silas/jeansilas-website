@@ -1,0 +1,86 @@
+---
+export const prerender = true;
+
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+
+import Wide from '@l/Wide.astro';
+import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
+import BigHeader from '@c/blocks/BigHeader.astro';
+import Article from '@md/Article.astro';
+import BlogData from '@md/BlogData.astro';
+import Frontmatter from '@md/Frontmatter.astro';
+import ArchiveNav from '@md/ArchiveNav.astro';
+
+// 1. Generate a new path for every collection entry
+export async function getStaticPaths() {
+    let collectionEntries: CollectionEntry<'archive'>[] = await getCollection('archive');
+
+    const archiveMap: Map<string, {root: CollectionEntry<'archive'>, entries: CollectionEntry<'archive'>[]}> = new Map();
+
+    collectionEntries.forEach((entry) => {
+        const slug = entry.slug.split('/').slice(0, -1).join('/');
+        console.log(slug);
+        let mapEntry = archiveMap.get(slug) ?? {root: {}, entries: []};
+
+        if (entry.data.role === 'root') {
+            mapEntry.root = entry;
+        } else {
+            // @ts-ignore
+            mapEntry.entries.push(entry);
+        }
+        // @ts-ignore
+        archiveMap.set(slug, mapEntry);
+    });
+
+
+    return [...archiveMap]
+        .filter((entry) => entry[1].root.data.status === 'published' || import.meta.env.DEV)
+        .filter((entry) => entry[1].root.data.role === 'root')
+        .map((entry) => ({
+            params: { slug: entry[0] },
+            props: { root: entry[1].root, entries: entry[1].entries }
+        }))
+}
+
+const { root, entries } = Astro.props;
+const { Content } = await root.render();
+
+const sections = await Promise.all(await entries.map(async (entry) => entry.render()));
+
+const title = `JSM | ${root.data.title}`;
+---
+
+<Wide title={title}>
+    <!-- <BlogData slot="head" {...entry.data} /> -->
+    <WideLeftLogo>
+        <div class="top-0 grid grid-cols-1 justify-items-center lg:sticky">
+            <BigHeader class="ml-auto w-fit lg:min-w-[24rem]" />
+            <!-- <Frontmatter post={entry} /> -->
+            <ArchiveNav />
+        </div>
+        <div
+            class="grid
+            max-w-5xl
+            grid-cols-1
+            justify-stretch
+            justify-items-center
+            gap-4
+            p-2
+            unfolded:p-4
+            xl:grid-cols-2"
+        >
+            <Article>
+                <Content />
+            </Article>
+            {
+            sections.map((Section) => (
+                <Article>
+                    <Section.Content/>
+                </Article>
+            ))
+            }
+        </div>
+    </WideLeftLogo>
+</Wide>

@@ -1,0 +1,31 @@
+---
+import { generateArchiveMap } from '@u/ContentMap';
+import SidebarCard from '@c/cards/SidebarCard.astro';
+import { reference } from 'astro:content';
+
+const archiveMap = await generateArchiveMap();
+// https://stackoverflow.com/questions/34054601/populate-nested-object-from-array
+let tree = [...archiveMap.entries()].map((entry) => {
+    return entry[0]
+        .split('/')
+        // @ts-ignore
+        .reduceRight((a,c)=>({[c]:a}), {...entry[1]});
+});
+console.log(tree)
+---
+
+<SidebarCard>
+    <h2 class="border-b border-space-800 pb-1 text-3xl text-center">The Archive</h2>
+    <!-- TODO: Componentify -->
+    <ul class="mt-2 list-outside list-disc pl-4">
+        {
+            [...archiveMap].map((entry) => (
+                <li class="mb-2">
+                    <a href={`/archive/${entry[0]}`} class:list={['hover:text-space-400']}>
+                        {entry[1].root.data.title}
+                    </a>
+                </li>
+            ))
+        }
+    </ul>
+</SidebarCard>

@@ -1,0 +1,30 @@
+---
+import Wide from '@l/Wide.astro';
+import WideLeftLogo from '@l/mixins/WideLeftLogo.astro';
+import BigHeader from '@b/BigHeader.astro';
+import ArchiveNav from '@md/ArchiveNav.astro';
+
+---
+
+<Wide title="Jean-Silas Moor | Blog">
+    <meta name="description" content="The ArtOps Guy's Blog" slot="head" />
+    <WideLeftLogo>
+        <div class="top-0 grid grid-cols-1 justify-items-center lg:sticky">
+            <BigHeader class="ml-auto w-fit lg:min-w-[24rem]" />
+            <ArchiveNav />
+        </div>
+        <div
+            class="grid
+            max-w-5xl
+            grid-cols-1
+            justify-stretch
+            justify-items-center
+            gap-4
+            p-2
+            unfolded:p-4
+            xl:grid-cols-2"
+        >
+
+        </div>
+    </WideLeftLogo>
+</Wide>
