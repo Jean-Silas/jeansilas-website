@@ -1,6 +1,7 @@
 # The Readme For The Website of Jean-Silas Moor
 
-There isn't much here for external audiences. This is mostly for my own sanity.
+There isn't much here for external audiences.
+This is mostly for my own sanity.
 
 ## 🚀 Project Structure
 
@@ -71,6 +72,17 @@ I've gone completely overboard with content types and schemas.
 
 1. One sentence per line.
 2. Consistently use callouts and asides.
+
+## Tailwind Nonsense
+
+The bulk of the tailwind customization for this site has been set up as local tailwind plugins, which you can find in the `./tailwind/` folder.
+
+I'm 50/50 on the efficacy of this approach.
+
+There are some complicated things going with the prose styling.
+Make sure to look at **both** `./tailwind/prose.ts`  and  `./src/components/md/Article.astro` to figure it out.
+
+Everything in `./tailwind/fluid.ts` needs more polishing.
 
 ## 🧞 Commands
 
