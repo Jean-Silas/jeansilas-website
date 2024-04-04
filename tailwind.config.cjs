@@ -7,8 +7,9 @@ import deviceBreakpoints from './tailwind/device';
 module.exports = {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
     theme: {
+        // I think I've stopped using Inter entirely at this point.
         fontFamily: {
-            sans: ["'Inter', sans-serif"],
+            sans: ["'Montserrat Variable', sans-serif"],
             title: ["'Montserrat Variable', sans-serif"],
             mono: ['Martian Mono Variable', 'consolas', 'serif'],
         },

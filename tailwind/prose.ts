@@ -156,7 +156,7 @@ export default plugin(
                     },
                     article: {
                         css: {
-                            '--tw-prose-body': theme('colors.space[100]'),
+                            '--tw-prose-body': theme('colors.space[50]'),
                             '--tw-prose-headings': 'white',
                             '--tw-prose-lead': theme('colors.space[200]'),
                             '--tw-prose-links': theme('colors.space[50]'),
