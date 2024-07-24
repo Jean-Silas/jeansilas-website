@@ -15,29 +15,44 @@ import Callout from '@c/md/Callout.astro';
 # Continuous Refinement Functions: Designing Realistically Bad Behavior
 
 <Callout kind="summary">
-    Goal Oriented Action Planning gives us a robust way to tackle the practical side of behavior design, but it doesn't give us many tools for making behavior feel "organic."
-    In order to do that, you need to insert flaws into the behavior loop, ideally in a way that exposes points of control for your design team.
-    
-    And that's where Continuous Refinement Functions come in.
-
-    CRFs are coroutine-ish functions that return successively higher-quality results with each yield.
-    They're most easily used in perception systems (e.g. a Sound Perception function that returns a successively narrower conic section for determining the location of an audio source), but they really shine when you use them throughout the entire behavior model.
-    
-    Why?
-
-    Because CRFs are inherently responsive to pressure.
-    When you use them throughout your behavior system, your designers can tune playstyle-specific reactivity.
-    You can reward aggression, encourage stealth, make a robot feel inherently different than a human, all by parameterizing pressure responses.
-
-    So let's learn how to use them.
+    - The easiest way to make a human screw up is to rush them.
+    - Continuous Refinement Functions give you a way to implement entity behavior that you can rush and interrupt.
+    - CRF's are most easily used in perception systems, but they're also a clean fit for things like aiming and planning.
+    - From a high-level perspective, CRF's let you tune how rewarding aggression is in different situations.
 </Callout>
 
 One of my favorite things to see in games are enemies that are aggressive _until you land a headshot._
-It's a form of reactivity that rewards skillful play and it can lead to some very interesting feedback loops.
+It's a form of reactivity that rewards skillful play, and it can lead to some fantastic feedback loops, but implementing it in a scalable way can be tricky.
 
-My preferred way to _implement_ that kind of reactivity is to insert Continuous Refinement Functions into all the places where behavior systems produce **intentionally non-optimal results.**
+And that's where Continuous Refinement Functions come in.
 
-But what's the best way to build that kind of behavior?
+## What's a CRF?
+
+CRFs are coroutine-ish functions that return successively higher-quality results with each yield.
+When you use them in a behavior system, the speed, range, and curve for what the CRF spits out gives you a baseline of parameterization that you can build on top of.
+
+In short, CRFs let you account for things like experience, confidence, and fear, without having to build out full branches of logic, by giving those 'cerebral' elements analog feedback channels into your behavior system.
+
+Now it's worth noting that the specific term 'CRF' is a bullshit term — I pulled it out of my ass to describe patterns I've seen in the wild.
+Don't be too worried about search results if you're looking for more background info:
+If it's a function that takes a value, sets a goal value, and returns results that are successively closer to that goal value, it's a CRF.
+
+## Simple CRFs
+
+The most straightforward place to start with CRFs in behavior systems is aiming.
+You have a target location, an aim vector, and you incrementally rotate the vector towards the location.
+Simple, right?
+
+...Kinda.
+
+What we're missing in this off-the-cuff description is a meaningful *distance metric* we can derive our *confidence threshold* from, as well as some additional inputs to drive the feedback cycle.
+Let's noodle out some pseudo-code.
+
+```C++
+uint32 num = 2;
+```
+
+You'll typically find CRFs in perception systems (e.g. a Sound Perception function that returns a successively narrower conic section for determining the location of an audio source), but they're all over the place, in various forms.
 
 ## Reactivity
 
@@ -113,3 +128,9 @@ A highly simplified model of human decision making tends to consist of:
 -   Action Selection
 
 7. Action Execution
+
+
+## CRF
+
+Goal Oriented Action Planning gives us a robust way to tackle the practical side of behavior design, but it doesn't give us many tools for making behavior feel "organic."
+In order to do that, you need to insert flaws into the behavior loop, ideally in a way that exposes points of control for your design team.
