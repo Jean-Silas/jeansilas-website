@@ -12,26 +12,26 @@
         "lint-check": "prettier --check . --plugin=prettier-plugin-astro --plugin=prettier-plugin-tailwindcss"
     },
     "dependencies": {
-        "@astrojs/mdx": "^2.3.1",
-        "@astrojs/react": "^3.6.3",
+        "@astrojs/mdx": "^4.0.3",
+        "@astrojs/react": "^4.1.2",
         "@astrojs/tailwind": "^5.1.4",
-        "@astrojs/vercel": "^7.8.2",
+        "@astrojs/vercel": "^8.0.1",
         "@calcom/embed-react": "^1.5.2",
         "@fontsource-variable/martian-mono": "^5.1.1",
         "@fontsource-variable/montserrat": "^5.1.1",
         "@tailwindcss/container-queries": "^0.1.1",
-        "@types/react": "^18.3.18",
-        "@types/react-dom": "^18.3.5",
-        "astro": "^4.16.18",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
+        "@types/react": "^19.0.2",
+        "@types/react-dom": "^19.0.2",
+        "astro": "^5.1.2",
+        "react": "^19.0.0",
+        "react-dom": "^19.0.0",
         "tailwindcss": "^3.4.17"
     },
     "devDependencies": {
         "@tailwindcss/typography": "^0.5.15",
         "prettier": "^3.4.2",
-        "prettier-plugin-astro": "^0.12.3",
-        "prettier-plugin-tailwindcss": "^0.5.14",
+        "prettier-plugin-astro": "^0.14.1",
+        "prettier-plugin-tailwindcss": "^0.6.9",
         "remark-hint": "^1.0.10",
         "tailwind-merge": "^2.6.0"
     }
