@@ -8,35 +8,43 @@ tags:
 
 # Hello World
 
-This website's a bit of a tech-experiment (stuff I play with here gets recycled into the main Wise Lich site), so don't mind the jank; it's part of the charm.
+This website's a bit of a tech experiment, so please excuse the jank; it's part of the charm.
 
-Stack-wise, this site is pretty simple: Astro, with Tailwind and a teeny tiny bit of React, hosted on Vercel.
+Stack-wise, it's pretty simple: Astro, with Tailwind (which I'm starting to regret) and a teeny tiny bit of React (which I generally ignore), hosted on Vercel.
 Most text longer than a paragraph is written as markdown.
 The only vaguely fancy thing I've done so far is set up some utility classes for container queries and fluid text.
 
 On the design front, I'm also keeping things simple.
 Crisp edges, clear z-depth, simple color choices, clear content blocking — the goal here is a visual language that emphasizes _composability._
 
-Why? Because the end-goal is a content model that works for both blogging _and_ graph-modeled documentation archives.
+Why? Because the end-goal is a content model that works for both blogging _and_ multigraph documentation archives.
 
-## ...What the hell is graph-modeled documentation?
+## ...What the hell is a multigraph documentation archive?
 
-Something I frequently kvetch about is how most documentation is rarely written in a way that lines up with how people read it.
+Something I frequently complain about is how most documentation isn't written in a way that lines up with how people read it.
 
-Think about how people tend to read documentation — in a rush, narrowly searching for the solution to a specific problem, and then either moving laterally or zooming out to a broader problem-domain.
+Which is to say — most documentation is read in a rush, by someone narrowly searching for the solution to a specific problem.
+Readers do not take the time to broadly consider how the content might be organized, or what order they should read pages in.
+They type in a search term, they click on some results, and they skim until they see something relevant.
+They don't *read* until they think they've found what they're looking for.
 
-Even when documentation teams are on-point with their Diátaxis categories and learning-paths, the documentation they produce tends to be vaguely book-shaped.
+Why?
+Because even deeply linked digital-first documentation tends to be book-shaped.
 The hierarchy of topics is rarely invertible.
 The atomicity of the content is awkward.
-**The pages might be organized into a tree, but that tree makes for a pretty shitty graph.**
+**At best, you get a tree, a directed graph.
+And that directed graph will be, fundamentally, linear.**
 
-And that's where graph-modeling comes in.
+Readers are used to linear content, so they skip through it.
+If you want to them to reliably *read* what you've written, you have to structure that content in a way where readers can control the sequencing.
+And that's where multigraph documentation come in.
 
-Graph-modeling boils down to taking page/chapter-oriented content and breaking it down into smaller, searchable, reusable, 'nodes' of data.
+The basic idea behind multigraph documentation archives is that, if you break down your documentation into smaller, individually searchable, elements, you can annotate those elements with relationships that can be used to *compose* reading sequences.
+This frees you from having to work in chapters and pages fully dedicated to diátaxical categories, and it gives readers the ability to directly see and engage with those categories as part of a cohesive, dynamically constructed, document.
 If you've ever used personal-knowledgebase tools like Obsidian, you'll have a pretty good idea of where this is going.
 
 Good documentation should be like a database.
-You should be able to query it and construct views that facilitate specific goals.
+You should be able to query it and construct reading sequences that facilitate specific goals.
 
 And I'm using _this_ site to hash out the bones of that for the main Wise Lich site.
 
