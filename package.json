@@ -19,6 +19,7 @@
         "@calcom/embed-react": "^1.5.2",
         "@fontsource-variable/martian-mono": "^5.1.1",
         "@fontsource-variable/montserrat": "^5.1.1",
+        "@fontsource/iosevka": "^5.1.0",
         "@tailwindcss/container-queries": "^0.1.1",
         "@types/react": "^19.0.2",
         "@types/react-dom": "^19.0.2",

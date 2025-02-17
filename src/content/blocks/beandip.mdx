@@ -1,0 +1,60 @@
+---
+title: "Semantically Anchored Paths"
+status: draft
+tags:
+    - Stuff
+    - Things
+---
+
+# Semantically Anchored Paths
+
+My current 'big project' is an [open specification](https://github.com/Jean-Silas/SemanticallyAnchoredPaths-Specification) for URIs that are relative to hierarchies of 'semantically significant' directories in the local file system, which are discoverable by crawling the file system for configuration files.
+
+The basic idea is create a generic way to express project-relative paths that can handle arbitrarily deep hierarchies (e.g. projects inside projects), can be reasonably integrated into artist-facing systems in gaming and VFX, and can be used for both asset references and configuration references.
+
+Without relying on environment variables, asset servers, or any kind of external process.
+
+## The SAP URI Scheme in a Nutshell
+
+```diagram 
+     ┌─ Anchor                                   
+    ┌┴─┐                           
+sap:proj::PreViz.Reference//scale_ref/human/tall.usd
+└┬┘       └──────┬───────┘  └──────────┬───────────┘
+ └─ Scheme       └─ Namespace          └─ Path
+```
+
+1. The `Scheme` segment is what makes it a URI. 
+   - SAP stands for Semantically Anchored Path.
+2. The `Anchor` segment indicates the *kind* of directory to ascend to. 
+   - A directory is anchored by putting a `.dirconf.[anchor].json` file inside it. The anchor is included in the file name so that simple paths (ones without namespaces) can be resolved without opening and parsing the file.
+   - There are seven anchors in the spec (see table), specifically to support both shot-, scene-, and sequence-relative paths *inside* projects and flexibly arranged shared resources and dependencies *outside* projects.
+3. The `Namespace` segment is an optional segment that's resolved by reading the namespace dictionary inside the configuration file.
+4. The `Path` segment is resolved as a normal path.
+
+
+| Anchor | Name         |
+| ------ | ------------ |
+| `org`  | Organization |
+| `dept` | Department   |
+| `work` | Workspace    |
+| `proj` | Project      |
+| `lib`  | Library      |
+| `kit`  | Kit          |
+| `pkg`  | Package      |
+
+The information above isn't enough to count as a proper, formal, specification, but it should give you a decent bird's eye view.
+
+## But... Why?
+
+Our IDE's support multi-root workspaces and per-project configuration.
+We prioritize making our programmer-facing tools (relatively) portable and (relatively) easy to deploy.
+We've created ecosystems of tools and frameworks let students and juniors learn and experiment with scaled-down versions of enterprise-sized tools.
+
+But we don't do any of that for artists.
+
+The DCCs we give our artists aren't IDE-like; they have fistfuls of brittle environment variables and all too frequently require destructive script-based configuration management for what *should be* simple, static, per-project configurations.
+The assumption that artists use studio-managed workstations is deeply engrained into every tool we give them.
+
+And if we want to fix that at-scale, the first thing we need is a generalized solution for file path wrangling that isn't tied to a specific DCC or game engine.
+Something that doesn't require environment variables, where all you need to do is pull a git repo.

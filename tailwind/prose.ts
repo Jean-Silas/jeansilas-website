@@ -119,6 +119,12 @@ export default plugin(
                                 backgroundColor: theme('colors.space[900]'),
                                 padding: '0.2ch 0.1ch',
                             },
+                            pre: {
+                                fontSize: '1.125em',
+                                fontFamily: 'Iosevka',
+                                fontWeight: 400,
+                                lineHeight: 'normal',
+                            },
                             h1: {
                                 fontSize: '1.25em',
                             },
