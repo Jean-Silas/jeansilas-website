@@ -2,28 +2,29 @@
 const year = new Date().getFullYear();
 ---
 
-<footer class="mt-8 flex flex-wrap items-stretch gap-4 bg-space-800 p-3">
-    <div class="relative flex-shrink flex-grow pb-4 text-center">
-        <span class="my-auto block">
-            <a href="/𝓢𝓮𝓬𝓻𝓮𝓽𝓟𝓪𝓰𝓮">© {year} Jean-Silas Moor</a>
-        </span>
-        <hr class="absolute bottom-2 mt-2 w-full border-space-400" />
-    </div>
+<footer class="mt-8  items-stretch gap-4 bg-space-800 p-3">
     <div class="grid flex-grow grid-cols-2">
         <div>
             <span class="mb-2 block text-2xl">Links</span>
             <ul class="ml-4 list-outside list-disc">
-                <li>Github</li>
-                <li>Mastodon</li>
+                <li><a href="https://github.com/Jean-Silas">Github</a></li>
+                <li><a href="https://mastodon.gamedev.place/@jeansilas">Mastodon</a></li>
             </ul>
         </div>
         <div>
             <span class="mb-2 block text-2xl">Site Map</span>
             <ul class="ml-4 list-outside list-disc">
                 <li><a href="/">Home</a></li>
-                <li><a href="/mentoring">Mentoring</a></li>
-                <li><a href="/blog">Blog</a></li>
+                <!-- <li><a href="/mentoring">Mentoring</a></li> -->
+                <!-- <li><a href="/blog">Blog</a></li> -->
             </ul>
         </div>
+    </div>
+    <div class="relative flex-shrink flex-grow pt-4 text-center">
+        <hr class="absolute top-2 mt-2 w-full border-space-400" />
+        <span class="mt-auto my-auto block">
+            <a href="/𝓢𝓮𝓬𝓻𝓮𝓽𝓟𝓪𝓰𝓮">© {year} Jean-Silas Moor</a>
+        </span>
+        
     </div>
 </footer>
