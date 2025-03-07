@@ -1,0 +1,31 @@
+---
+title: Notes on Naming
+subtitle: Naming things is hard, because we don't let names be names.
+status: published
+tags:
+    - $focus:pipeline:assets
+
+---
+
+import Callout from '@c/md/Callout.astro';
+
+# Notes on Naming
+
+<Callout kind="summary">
+    This is a loose series of observations about naming things. It'll grow over time.
+</Callout>
+
+## 2025-03-07: Names should be written backwards
+
+Not literally backwards — conceptually backwards.
+Asset names in gaming often use some kind of `bigGroup_smallGroup_identity_variant` pattern.
+They refine downwards from broad labels to specific labels.
+
+But when you sit down to make an asset, `prop_furn_kitchenTable_clean` begins its life as that specific variant.
+You make a clean kitchen table, something that fits the fullfills the descriptive portion of the name,
+and then you run it through your pipeline to transform it, encapsulate it, and publish it as something that fulfills the categorical potion of the name.
+You start with a table and end with a prop.
+
+And just to be clear, I'm not saying that `clean_kitchenTable_furn_prop` is a better name than `prop_furn_kitchenTable_clean` 
+— I'm saying that we should build the name `prop_furn_kitchenTable_clean` by prepending labels to righthand descriptive portion, the same way you build the
+asset itself by prepending layers of descriptive data to a payload of art.
