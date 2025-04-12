@@ -22,10 +22,37 @@ Asset names in gaming often use some kind of `bigGroup_smallGroup_identity_varia
 They refine downwards from broad labels to specific labels.
 
 But when you sit down to make an asset, `prop_furn_kitchenTable_clean` begins its life as that specific variant.
-You make a clean kitchen table, something that fits the fullfills the descriptive portion of the name,
+You make a clean kitchen table, something that fulfills the descriptive portion of the name,
 and then you run it through your pipeline to transform it, encapsulate it, and publish it as something that fulfills the categorical potion of the name.
 You start with a table and end with a prop.
 
 And just to be clear, I'm not saying that `clean_kitchenTable_furn_prop` is a better name than `prop_furn_kitchenTable_clean` 
 — I'm saying that we should build the name `prop_furn_kitchenTable_clean` by prepending labels to righthand descriptive portion, the same way you build the
 asset itself by prepending layers of descriptive data to a payload of art.
+
+## 2025-04-12: The way we write names is often a response to bad UI patterns
+
+I'm going to pick on my `bigGroup_smallGroup_identity_variant` example a bit: it's a bad name.
+Or, rather, it's not really a *name* at all.
+It's a composite identifier that's been written as a name, because throwing all of that information into the name is easier than the alternatives.
+Hell, half of it is just categorization:
+
+```diagram
+┌─ Category         ┌─ THE ACTUAL NAME
+│                   │
+bigGroup_smallGroup_identity_variant
+         │                   │
+         └─ Category         └─ ID Refiner
+```
+
+Why is that bad?
+Because categories are locations, and that means that half of the identifier is information held in the asset system.
+We don't need to statically re-serialize that information into the identifier.
+It's stable information, the equivalent of a composite key in a database.
+All we really need are UIs that can combine the elements of a composite identifier into a display string, that also expose those same attributes for editing through those display strings.
+
+But you can't build that UI functionality without either portable asset schemas or a unified set of base attributes.
+It requires project-aware tooling, and a flexible, unopinionated, approach to loading and editing data that's fairly rare among DCCs and game engines.
+
+And on a practical level, orchestrating a pipeline of name updates is easier than rebuilding a bunch of hierarchical UI elements.
+UI is hard.
